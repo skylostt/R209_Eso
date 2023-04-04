@@ -1,0 +1,56 @@
+.searchbar {
+    border: 1px solid lightgray;
+    border-radius: 10px 0 0 10px;
+    margin-right: 0;
+    background-color: lightgray;
+    width: 500px;
+}
+
+.topbar {
+    padding: 5px;
+    background-color: darkblue;
+    display: flex;
+    flex-direction: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.submitsearch {
+    margin-left: 0;
+    background-color: orange;
+    border: 1px solid orange;
+    border-radius: 0 10px 10px 0;
+}
+
+.logo {
+    color: white;
+}
+
+form {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.compte {
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.commandes {
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.panier {
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+}
