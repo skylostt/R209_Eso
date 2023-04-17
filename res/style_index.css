@@ -1,6 +1,12 @@
+body {
+    font-family: Ubuntu, serif;
+    padding: 0;
+    margin: 0;
+}
+
 .searchbar {
     border: 1px solid lightgray;
-    border-radius: 10px 0 0 10px;
+    border-radius: 5px 0 0 5px;
     margin-right: 0;
     background-color: lightgray;
     width: 500px;
@@ -15,16 +21,29 @@
     align-items: center;
 }
 
-body {
-    padding: 0;
-    margin: 0;
-}
-
 .submitsearch {
     margin-left: 0;
-    background-color: orange;
-    border: 1px solid orange;
-    border-radius: 0 10px 10px 0;
+    background-color: #ffcf5c;
+    border: 1px solid transparent;
+    border-radius: 0 5px 5px 0;
+}
+
+.submitsearch:hover {
+    transition: 0.2s;
+    background-color: #eebb42;
+}
+
+.sel_cat {
+    background-color: #ffcf5c;
+    border: 1px solid transparent;
+    border-radius: 5px 5px 5px 5px;
+    margin-right: 5px;
+
+}
+
+.sel_cat:hover {
+    transition: 0.2s;
+    background-color: #eebb42;
 }
 
 .logo {
@@ -37,20 +56,22 @@ form {
     margin-right: 20px;
 }
 
-.compte {
+.bar_elt {
     color: white;
     margin-left: 20px;
     margin-right: 20px;
+    align-items: center;
+    text-decoration: none;
 }
 
-.commandes {
-    color: white;
-    margin-left: 20px;
-    margin-right: 20px;
+.bar_elt:hover {
+    text-decoration: underline;
+    color: lightgray;
 }
 
-.panier {
-    color: white;
-    margin-left: 20px;
-    margin-right: 20px;
+.material-icons {
+  vertical-align: middle !important;
+  padding-bottom: 3px;
+  margin-right: 4px;
+  font-size: 1.3em;
 }

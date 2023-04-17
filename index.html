@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Page d'accueil</title>
     <link rel="stylesheet" href="res/style_index.css">
@@ -8,18 +10,25 @@
 <body>
     <div class='topbar'>
         <span class='logo'>logo</span>
-        <form>
-            <input type='text' class='searchbar'><input type='submit' class='submitsearch' value='search'>
+        <form method='GET' action='search.php'>
+            <select name="cat" class="sel_cat">
+                <option value="all">Catégorie</option>
+                <option value="cartes">Cartes</option>
+                <option value="peintures">Peintures</option>
+                <option value="minéraux">Minéraux</option>
+                <option value="bijoux">Bijoux</option>
+            </select>
+            <input type='text' class='searchbar' name='query'><input type='submit' class='submitsearch' value='Rechercher'>
         </form>
-        <div class='compte'>
-            Mon compte
-        </div>
-        <div class='commandes'>
-            Mes commandes
-        </div>
-        <div class='panier'>
-            Mon panier
-        </div>
+        <a class='bar_elt' href=''>
+            <span class="material-icons">person</span>Mon compte
+        </a>
+        <a class='bar_elt' href=''>
+            <span class="material-icons">receipt_long</span>Mes commandes
+        </a>
+        <a class='bar_elt' href=''>
+            <span class="material-icons">shopping_basket</span>Mon panier
+        </a>
     </div>
 </body>
 </html>
