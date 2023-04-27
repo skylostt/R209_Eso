@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&family=Ubuntu&display=swap');
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Ubuntu';
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+input {
+    font-family: 'Ubuntu';
+}
+
+hr {
+    height: 1px;
+    background-color: gray;
+    border: none;
+}
+
+.margin-right-10 {
+    margin-right: 10px;
+}
+
+.col-gray {
+    color: gray;
+}
+
+.material-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+
+#getFile {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.nav-icon {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+
+.md-white {
+    color: white;
+}
+
+.vert-align {
+    vertical-align: middle;
+}
+
+.log_reg_form {
+    text-align: center;
+}
+
+.log_reg_form input {
+    border: 1px solid #aaaaaa;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.log_reg_form button {
+    background-color: darkblue;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 5px;
+    color: white;
+
+}
+.log_reg_form button:hover {
+    transition: 0.3s;
+    background-color: #000044;
+}
+
+.margin-left-1 {
+    margin-left: 1%;
+}
+
+.ic-btn {
+    border: none;
+    background-color: transparent;
+}
+
+.ic-btn:hover {
+    transition: 0.3s;
+    color: #333333;
+}
+
+.connect-button {
+    margin-top: 10px;
+}
