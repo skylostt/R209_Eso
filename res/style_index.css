@@ -21,6 +21,25 @@ body {
     align-items: center;
 }
 
+.cat_bar {
+    background-color: #ffcf5c;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.cat_bar a {
+    color: black;
+    text-decoration: none;
+    width: 10px;
+    margin-right: 10px;
+}
+
+.cat_bar a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
 .submitsearch {
     margin-left: 0;
     background-color: #ffcf5c;

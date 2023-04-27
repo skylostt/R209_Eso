@@ -1,21 +1,65 @@
-.article {
-    display: flex;
-    align-items: center;
+/* Date et heure ma couille */
+article p.meta {
+  font-style: italic;
+  color: #888;
+  margin-bottom: 20px;
   }
   
-  h5 {
-    display: inline;
-    margin-left: 10px;
+  article p.meta time {
+  font-style: normal;
   }
-
-  input
-  {
-    width: 120px;
+  
+  /* Scale Image*/
+  article img {
+  max-width: 100%;
+  margin-bottom: 20px;
   }
+  
+  /* listes t'es erreurs */
+  article ul {
+  margin-bottom: 20px;
+  }
+  
+  /* tableau/détails du produit*/
+  article table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  }
+  
+  
+  article td {
+  padding: 5px;
+  border: 1px solid #ddd;
+  }
+  
+  /* Prix et bouton d'ajout panier*/
+  article p strong {
+  color: darkblue;
+  font-size: 1.5em;
+  display: inline-block;
+  }
+  
+  /*button */
+  article a {
+  background-color: darkblue;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-decoration: none;
 
-
-  .buy {
-    display: flex;
-    align-items: bottom;
-
+  }
+  
+  article a:hover {
+  background-color: rgb(1, 1, 114);
+  }
+  
+  /* Footer */
+  footer {
+  background-color: #eee;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.8em;
+  color: #888;
   }
