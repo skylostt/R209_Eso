@@ -62,4 +62,4 @@ CREATE TABLE Commentaires (
     FOREIGN KEY (idUser) REFERENCES Utilisateurs (idUser)
 );
 
-
+COMMIT;
