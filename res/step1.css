@@ -1,4 +1,15 @@
 .ranger {
-    display: flex;
+    display: inline-block;
     align-items: center;
 }
+
+.button {
+    background-color: darkblue;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
