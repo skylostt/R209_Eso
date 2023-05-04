@@ -94,3 +94,32 @@ form {
   margin-right: 4px;
   font-size: 1.3em;
 }
+
+.bienvenue {
+    margin-top: 5%;
+    margin-bottom: 3%;
+    margin-right: 30%;
+}
+
+.cat_img {
+    width: 200px;
+    height: 200px;
+
+}
+
+.categories_index {
+    position: relative;
+    display: flex;
+    margin-right: 20%;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
+
+.cat_content {
+    position: relative;
+    margin-right: 1%;
+}
