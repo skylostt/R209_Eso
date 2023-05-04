@@ -15,7 +15,8 @@ DROP TABLE IF EXISTS Categories;
 
 CREATE TABLE Categories (
     idCat INTEGER PRIMARY KEY AUTOINCREMENT,
-    titre TEXT NOT NULL
+    titre TEXT NOT NULL,
+    b64img TEXT NOT NULL
 );
 
 DROP TABLE IF EXISTS Articles;
@@ -26,6 +27,7 @@ CREATE TABLE Articles (
     quantite INTEGER NOT NULL,
     prix REAL NOT NULL,
     description TEXT NOT NULL,
+    b64img TEXT,
     idCat INTEGER NOT NULL,
     FOREIGN KEY (idCat) REFERENCES Categories (idCat)
 );

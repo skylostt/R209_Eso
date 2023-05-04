@@ -12,7 +12,7 @@ body {
 .cat_img {
     width: 200px;
     height: 200px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .categories_index {
@@ -26,6 +26,7 @@ body {
     bottom: 10px;
     left: 15px;
     color: white;
+    text-shadow: 1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, -1px 0 0 black;
 }
 
 .cat_content {

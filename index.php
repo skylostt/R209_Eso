@@ -20,7 +20,7 @@ while ($donnees=$reponse->fetchArray())
 {
     echo '<div class="cat_content">';
     echo '<a href="search.php?cat='.$donnees['idCat'].'">';
-    echo '<img class="cat_img" src="Img/tarot.jpeg" alt="">';
+    echo '<img class="cat_img" src="data:image/jpeg;base64,'.$donnees['b64img'].'" alt="">';
     echo '</a>';
     echo '<div class="bottom-left">'.$donnees['titre'].'</div>';
     echo '</div>';
