@@ -24,7 +24,7 @@ CREATE TABLE Articles (
     idProd INTEGER PRIMARY KEY AUTOINCREMENT,
     nom TEXT NOT NULL,
     quantite INTEGER NOT NULL,
-    prix INTEGER NOT NULL,
+    prix REAL NOT NULL,
     description TEXT NOT NULL,
     idCat INTEGER NOT NULL,
     FOREIGN KEY (idCat) REFERENCES Categories (idCat)

@@ -1,7 +1,5 @@
-body {
-    font-family: Ubuntu, serif;
-    padding: 0;
-    margin: 0;
+nav {
+    margin: -10px;
 }
 
 .searchbar {

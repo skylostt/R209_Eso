@@ -1,14 +1,12 @@
 body {
-    font-family: Ubuntu, serif;
-    padding: 0;
-    margin: 0;
+    margin: 10px;
 }
-
 
 .bienvenue {
     margin-top: 5%;
     margin-bottom: 3%;
     margin-right: 30%;
+    margin-left: 10%;
 }
 
 .cat_img {

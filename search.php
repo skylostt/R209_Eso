@@ -9,49 +9,21 @@
     <meta charset="UTF-8">
     <title>Recherche</title>
 </head>
+<?php include('nav.php'); ?>
 <body>
-    <nav>
-        <div class='topbar'>
-            <a class='logo' href='index.html'>
-                <span class="material-icons">home</span>
-            </a>
-            <form method='GET' action='search.php' class='form_bar'>
-                <select name="cat" class="sel_cat">
-                    <option value="all">Catégorie</option>
-                    <option value="cartes">Cartes</option>
-                    <option value="peintures">Peintures</option>
-                    <option value="minéraux">Minéraux</option>
-                    <option value="bijoux">Bijoux</option>
-                </select>
-                <input type='text' class='searchbar' name='query'><input type='submit' class='submitsearch' value='Rechercher'>
-            </form>
-            <a class='bar_elt' href=''>
-                <span class="material-icons">person</span>Mon compte
-            </a>
-            <a class='bar_elt' href=''>
-                <span class="material-icons">receipt_long</span>Mes commandes
-            </a>
-            <a class='bar_elt' href=''>
-                <span class="material-icons">shopping_basket</span>Mon panier
-            </a>
-        </div>
-        <div class='cat_bar'>
-            <a href="">Cartes</a>
-            <a href="">Peintures</a>
-            <a href="">Minéraux</a>
-            <a href="">Bijoux</a>
-        </div>
-    </nav>
+<h1>Résultats</h1>
 <?php
+/*
 class MyDB extends SQLite3
 {
     function __construct()
     {
         $this->open('bdd.db');
     }
-}
+}*/
 $db = new MyDB();
-$req = 'SELECT * FROM Articles WHERE nom LIKE "%'.$_GET['query'].'%" AND (idCat='.$_GET['cat'].' OR '.$_GET['cat'].'=0)';
+$query = isset($_GET['query']) ? $_GET['query'] : '';
+$req = 'SELECT * FROM Articles WHERE nom LIKE "%'.$query.'%" AND (idCat='.$_GET['cat'].' OR '.$_GET['cat'].'=0)';
 $reponse = $db->query($req);
 while ($donnees=$reponse->fetchArray())
 {
