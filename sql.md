@@ -31,3 +31,9 @@ SELECT idProd
     WHERE (nom LIKE '%$query%' OR description LIKE '%$query%') AND idCat=$cat;
 ```
 
+# Ajout au panier
+
+```sql
+INSERT INTO Paniers (idPanier, idProd, idUser, qte)
+VALUES ($panier, $id_prod, $id_user, $qte)
+```

@@ -67,6 +67,7 @@ body {
 
 .logo {
     color: white;
+    text-decoration: none;
 }
 
 .form_bar {

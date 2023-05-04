@@ -45,7 +45,7 @@ h1 {
 }
   
   /*button */
-.article a {
+.article .submit_article {
   background-color: darkblue;
   color: #fff;
   border: none;
@@ -53,10 +53,11 @@ h1 {
   font-size: 1.2em;
   cursor: pointer;
   text-decoration: none;
+  margin-top: 5px;
 
 }
   
-.article a:hover {
+.article .submit_article {
   background-color: rgb(1, 1, 114);
 }
 
