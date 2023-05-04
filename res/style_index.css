@@ -14,7 +14,7 @@ body {
 .cat_img {
     width: 200px;
     height: 200px;
-
+    object-fit: contain;
 }
 
 .categories_index {
@@ -27,6 +27,7 @@ body {
     position: absolute;
     bottom: 10px;
     left: 15px;
+    color: white;
 }
 
 .cat_content {
