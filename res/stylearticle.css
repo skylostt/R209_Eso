@@ -1,133 +1,87 @@
-
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
+h1 {
+    text-align: center;
 }
 
-header div {
-	background-color: #333;
-	color: #fff;
-	padding: 20px;
-
+.article p.meta {
+  font-style: italic;
+  color: #888;
 }
-
-nav ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	display: flex;
-}
-
-nav li {
-	margin-right: 20px;
-}
-
-nav a {
-	color: #fff;
-	text-decoration: none;
-}
-
-nav a:hover {
-	text-decoration: underline;
-}
-
-
-article {
-	max-width: 5000px;
-	margin: 0 left;
-	padding: 20px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-}
-
-article h1 {
-	font-size: 2em;
-	margin-bottom: 10px;
-}
-
-article p.meta {
-	font-style: italic;
-	color: #888;
-	margin-bottom: 20px;
-}
-
-.div-second 
-{
-  vertical-align: middle;
-}
-
-article p.meta time {
-	font-style: normal;
-}
-
-article img {
-	max-width: 100%;
-	margin-bottom: 20px;
-	float: left;
-	margin-right: 20px;
-}
-
-article .description {
-	width: 50%;
-}
-
-article .details {
-	width: 40%;
-	margin-left: 10%;
-	margin-bottom: 20px;
-}
-
-article ul {
-	margin-bottom: 20px;
-}
-
-article table {
-	border-collapse: collapse;
-	margin-bottom: 20px;
-}
-
-article td {
-	padding: 5px;
-	border: 1px solid #ddd;
-}
-
-article p strong {
-	color: #f00;
-	font-size: 1.5em;
-}
-
-article a {
-	background-color: darkblue;
-	color: #fff;
-	border: none;
-	padding: 10px;
-	font-size: 1.2em;
-	cursor: pointer;
-	
-	margin: 0;
-  text-decoration: none;
-}
-
-article a:hover {
-	background-color: rgb(1, 1, 110);
-}
-
-/* Styles pour le footer */
-footer {
-	background-color: #eee;
-	padding: 20px;
-	text-align: center;
-	font-size: 0.8em;
-	color: #888;
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
   
+.article p.meta time {
+  font-style: normal;
+  }
+  
+  /* Scale Image*/
+.article img {
+  margin-bottom: 20px;
+  object-fit: contain;
+  width: 500px;
+  height: 500px;
+  margin-left: 10px;
+}
+  
+  /* listes t'es erreurs */
+.article ul {
+  margin-bottom: 20px;
+}
+  
+  /* tableau/détails du produit*/
+.article table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+  
+  
+.article td {
+  padding: 5px;
+  border: 1px solid #ddd;
+}
+  
+  /* Prix et bouton d'ajout panier*/
+.article p strong {
+  color: darkblue;
+  font-size: 1.5em;
+  display: inline-block;
+}
+  
+  /*button */
+.article a {
+  background-color: darkblue;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-decoration: none;
+
+}
+  
+.article a:hover {
+  background-color: rgb(1, 1, 114);
 }
 
+.article {
+    display: flex;
+    margin-top: 5%;
+}
 
+.description {
+    width: 70%;
+}
+  
+.div-second {
+    margin-left: 10px;
+}
+
+  /* Footer */
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  background-color: #eee;
+  text-align: center;
+  font-size: 0.8em;
+  color: #888;
+  padding: 20px;
+}

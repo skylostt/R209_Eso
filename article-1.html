@@ -2,26 +2,46 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>Titre de l'article - Nom du site</title>
-	<link rel="stylesheet" href="css/stylearticle.css">
+    <title>Saint Pons - icônes & statues</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="res/stylearticle.css">
+    <link rel="stylesheet" href="res/style_index.css">
 </head>
 <body>
+    <nav>
+        <div class='topbar'>
+            <span class='logo'>EsoShop</span>
+            <form method='GET' action='search.php'>
+                <select name="cat" class="sel_cat">
+                    <option value="all">Catégorie</option>
+                    <option value="cartes">Cartes</option>
+                    <option value="peintures">Peintures</option>
+                    <option value="minéraux">Minéraux</option>
+                    <option value="bijoux">Bijoux</option>
+                </select>
+                <input type='text' class='searchbar' name='query'><input type='submit' class='submitsearch' value='Rechercher'>
+            </form>
+            <a class='bar_elt' href=''>
+                <span class="material-icons">person</span>Mon compte
+            </a>
+            <a class='bar_elt' href=''>
+                <span class="material-icons">receipt_long</span>Mes commandes
+            </a>
+            <a class='bar_elt' href=''>
+                <span class="material-icons">shopping_basket</span>Mon panier
+            </a>
+        </div>
+        <div class='cat_bar'>
+            <a href="">Cartes</a>
+            <a href="">Peintures</a>
+            <a href="">Minéraux</a>
+            <a href="">Bijoux</a>
+        </div>
+    </nav>
 
-	<header>
-
-        <!--faudra rajouter la barre de recherche ici-->
-
-	</header>
-
-	<main>
-		<article>
-			<header>
-                <div>
 				    <h1>Titre de l'article</h1>
-				    <p class="meta">Publié le <time datetime="2023-04-27">27 avril 2023</time></p>
-                </div>
-			</header>
-            <div>
+		<div class='article'>
 			<img src="Img/saint-pons-2.jpg" alt="Image de l'article">
             <div class="div-second">
 			    <p class="description">Description de l'article. Suae cogitatum fecit aut quicquid fecit increpuisset etiam insontium levibus victoriam tener aegrum quassari caedibus et increpuisset suae ita offensis tener factum salutis dispendium luctuosam quassari aut animus victoriam victoriam fecit eius ita levibus angustus increpuisset luctuosam animus etiam animus suae aut fecit ita animus dispendium corpus aut eius angustus increpuisset animus offensis eius existimans victoriam cogitatum luctuosam suae quicquid factum offensis levibus luctuosam aegrum quassari quassari aegrum ita levibus caedibus dispendium etiam ad eius suae factum cogitatum existimans luctuosam suae ita cogitatum increpuisset et et offensis factum corpus factum existimans levibus dispendium existimans offensis dispendium ad animus et animus.</p>
@@ -59,12 +79,11 @@
             
             </div>
             
-		</article>
-	</main>
+		</div>
 
-	<footer>
-		<p>Droit d'auteur © 2056 Nom du site. Tous droits réservés.</p>
-	</footer>
+	<div class='footer'>
+        Droit d'auteur © 2056 Nom du site. Tous droits réservés.
+	</div>
 
 </body>
 </html>
