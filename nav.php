@@ -12,17 +12,10 @@
             <select name="cat" class="sel_cat">
                 <option value="0">Toutes catégories</option>
 <?php
-class MyDB extends SQLite3
-{
-    function __construct()
-    {
-        $this->open('bdd.db');
-    }
-}
-$db = new MyDB();
-$req = 'SELECT * FROM Categories';
-$reponse = $db->query($req);
-while ($donnees=$reponse->fetchArray())
+$db_nav = new MyDB();
+$req_nav = 'SELECT * FROM Categories';
+$reponse_nav = $db->query($req_nav);
+while ($donnees=$reponse_nav->fetchArray())
 {
     $select = isset($_GET['cat']) && $_GET['cat'] == $donnees['idCat'] ? 'selected' : '';
     echo $select;
@@ -45,9 +38,9 @@ while ($donnees=$reponse->fetchArray())
     </div>
     <div class='cat_bar'>
 <?php
-$req = 'SELECT * FROM Categories';
-$reponse = $db->query($req);
-while ($donnees=$reponse->fetchArray())
+$req_nav = 'SELECT * FROM Categories';
+$reponse_nav = $db_nav->query($req_nav);
+while ($donnees=$reponse_nav->fetchArray())
 {
     echo '<a href="search.php?cat='.$donnees['idCat'].'">'.$donnees['titre'].'</a>';
 }
