@@ -1,6 +1,7 @@
 .ranger {
     display: inline-block;
     align-items: center;
+    margin-left: 10px;
 }
 
 .button {

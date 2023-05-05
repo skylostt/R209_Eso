@@ -24,7 +24,9 @@ $req = 'SELECT * FROM Categories';
 $reponse = $db->query($req);
 while ($donnees=$reponse->fetchArray())
 {
-    echo '<option value="'.$donnees['idCat'].'">'.$donnees['titre'].'</option>';
+    $select = isset($_GET['cat']) && $_GET['cat'] == $donnees['idCat'] ? 'selected' : '';
+    echo $select;
+    echo '<option value="'.$donnees['idCat'].'" '.$select.'>'.$donnees['titre'].'</option>';
 }
 ?>
 
