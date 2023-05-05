@@ -14,10 +14,15 @@
 <?php
 $db_nav = new MyDB();
 $req_nav = 'SELECT * FROM Categories';
-$reponse_nav = $db->query($req_nav);
+$reponse_nav = $db_nav->query($req_nav);
 while ($donnees=$reponse_nav->fetchArray())
 {
-    $select = isset($_GET['cat']) && $_GET['cat'] == $donnees['idCat'] ? 'selected' : '';
+    $select = '';
+    if (isset($_GET['cat'])) {
+        if ($_GET['cat'] === $donnees['idCat']) {
+            $select = 'selected';
+        }
+    }
     echo $select;
     echo '<option value="'.$donnees['idCat'].'" '.$select.'>'.$donnees['titre'].'</option>';
 }

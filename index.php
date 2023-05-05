@@ -15,6 +15,7 @@ include('nav.php');
     <h1>Catégories</h1>
     <div class='categories_index'>
 <?php
+$db = new MyDB();
 $req = 'SELECT * FROM Categories';
 $reponse = $db->query($req);
 while ($donnees=$reponse->fetchArray())
