@@ -16,7 +16,7 @@ $reponse = $db->query($req)->fetchArray();
     <link rel="stylesheet" href="res/stylearticle.css">
 <?php include('nav.php'); ?>
 
-        <h1>Article ~ <?php echo $reponse['nom']; ?></h1>
+        <h1><?php echo 'Article ~ '.$reponse['nom']; ?></h1>
 		<div class='article'>
             <img src="data:image/jpeg;base64,<?php echo $reponse['b64img']; ?>" alt="Image de l'article">
             <div class="div-second">
@@ -60,7 +60,7 @@ $reponse = $db->query($req)->fetchArray();
             </div>
 
 		</div>
-
+<?php $db->close(); ?>
 	<div class='footer'>
         Droit d'auteur © 2056 Nom du site. Tous droits réservés.
 	</div>

@@ -27,6 +27,7 @@ while ($donnees=$reponse->fetchArray())
     echo '<div class="bottom-left">'.$donnees['titre'].'</div>';
     echo '</div>';
 }
+$db->close();
 ?>
     </div>
 </body>

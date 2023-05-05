@@ -19,11 +19,10 @@ while ($donnees=$reponse_nav->fetchArray())
 {
     $select = '';
     if (isset($_GET['cat'])) {
-        if ($_GET['cat'] === $donnees['idCat']) {
+        if ($_GET['cat'] === strval($donnees['idCat'])) {
             $select = 'selected';
         }
     }
-    echo $select;
     echo '<option value="'.$donnees['idCat'].'" '.$select.'>'.$donnees['titre'].'</option>';
 }
 ?>
@@ -49,6 +48,8 @@ while ($donnees=$reponse_nav->fetchArray())
 {
     echo '<a href="search.php?cat='.$donnees['idCat'].'">'.$donnees['titre'].'</a>';
 }
+
+$db_nav->close();
 ?>
     </div>
 </nav>

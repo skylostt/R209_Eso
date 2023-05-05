@@ -39,6 +39,7 @@ while ($donnees=$reponse->fetchArray())
     echo '<a class="button">Acheter</a><br></p>';
     echo '</div>';
 }
+$db->close();
 
 ?>
 </body>
