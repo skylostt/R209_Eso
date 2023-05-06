@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 body {
     margin: 10px;
+    font-family: 'Noto Sans', Sans-Serif;
 }
 
 .bienvenue {

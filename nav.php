@@ -31,13 +31,13 @@ while ($donnees=$reponse_nav->fetchArray())
             <input type='text' class='searchbar' name='query' <?php echo isset($_GET['query']) ? 'value="'.$_GET['query'].'"' : '';?>><input type='submit' class='submitsearch' value='Rechercher'>
         </form>
         <a class='bar_elt' href=''>
-            <span class="material-icons">person</span>Mon compte
+            <span class="material-icons">person</span><span class='valign-link'>Mon compte</span>
         </a>
         <a class='bar_elt' href=''>
-            <span class="material-icons">receipt_long</span>Mes commandes
+            <span class="material-icons">receipt_long</span><span class='valign-link'>Mes commandes</span>
         </a>
         <a class='bar_elt' href=''>
-            <span class="material-icons">shopping_basket</span>Mon panier
+            <span class="material-icons">shopping_basket</span><span class='valign-link'>Mon panier</span>
         </a>
     </div>
     <div class='cat_bar'>

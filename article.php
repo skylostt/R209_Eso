@@ -14,6 +14,7 @@ $reponse = $db->query($req)->fetchArray();
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="res/stylearticle.css">
+    <link rel="stylesheet" href="res/font.css">
 <?php include('nav.php'); ?>
 
         <h1><?php echo 'Article ~ '.$reponse['nom']; ?></h1>
@@ -22,31 +23,8 @@ $reponse = $db->query($req)->fetchArray();
             <div class="div-second">
     <p class="description"><?php echo $reponse['description']; ?></p>
 
-			    <ul>
-				    <li>Caractéristique 1</li>
-				    <li>Caractéristique 2</li>
-				    <li>Caractéristique 3</li>
-			    </ul>
 
-			    <h2 class="details">Détails du produit</h2>
-			    <table>
-				    <tr>
-					    <td>Couleur</td>
-					    <td>Noir</td>
-				    </tr>
-				    <tr>
-					    <td>Matériau</td>
-					    <td>Cuir</td>
-				    </tr>
-				    <tr>
-					    <td>Taille</td>
-					    <td>M</td>
-				    </tr>
-				    <tr>
-					    <td>Poids</td>
-					    <td>200g</td>
-				    </tr>
-			    </table>
+			    <h2 class="details">Achat du produit</h2>
 
                 <p>Prix : <strong><?php echo $reponse['prix']; ?>€</strong></p>
                 <form>

@@ -83,13 +83,19 @@ nav {
 }
 
 .bar_elt:hover {
-    text-decoration: underline;
     color: lightgray;
 }
 
 .material-icons {
-  vertical-align: middle !important;
-  padding-bottom: 3px;
+  vertical-align: middle;
   margin-right: 4px;
   font-size: 1.3em;
+}
+
+.valign-link {
+    vertical-align: middle;
+}
+
+.valign-link:hover {
+    text-decoration: underline;
 }

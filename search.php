@@ -5,11 +5,10 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="res/nav.css">
-    <link rel="stylesheet" href="res/style_index.css">
     <link rel="stylesheet" href="res/step1.css">
+    <link rel="stylesheet" href="res/font.css">
     <meta charset="UTF-8">
     <title>Recherche</title>
-</head>
 <?php include('nav.php'); ?>
 <body>
 <h1>Résultats</h1>
