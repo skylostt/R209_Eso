@@ -4,30 +4,72 @@
     <meta charset="UTF-8">
     <link>
     <title>Votre panier</title>
-    <link rel="stylesheet" href="step1.css">
+    <link rel="stylesheet" href="../res/nav.css">
+    <link rel="stylesheet" href="../res/font.css">
+    <link rel="stylesheet" href="../res/panier.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <nav>
+        <div class='topbar'>
+            <a class='logo' href='index.html'>EsoShop</a>
+            <form method='GET' action='search.php' class='form_bar'>
+                <select name="cat" class="sel_cat">
+                    <option value="all">Catégorie</option>
+                    <option value="cartes">Cartes</option>
+                    <option value="peintures">Peintures</option>
+                    <option value="minéraux">Minéraux</option>
+                    <option value="bijoux">Bijoux</option>
+                </select>
+                <input type='text' class='searchbar' name='query'><input type='submit' class='submitsearch' value='Rechercher'>
+            </form>
+            <a class='bar_elt' href=''>
+                <span class="material-icons">person</span>Mon compte
+            </a>
+            <a class='bar_elt' href=''>
+                <span class="material-icons">receipt_long</span>Mes commandes
+            </a>
+            <a class='bar_elt' href=''>
+                <span class="material-icons">shopping_basket</span>Mon panier
+            </a>
+        </div>
+        <div class='cat_bar'>
+            <a href="">Cartes</a>
+            <a href="">Peintures</a>
+            <a href="">Minéraux</a>
+            <a href="">Bijoux</a>
+        </div>
+    </nav>
 <h1 style="color:darkblue;" align="center">Votre panier</h1>
-<hr style="color:darkblue">
 <br>
-<p>&emsp; &emsp; -- article(s) dans votre panier &emsp; &emsp; 
-<a class="button">Continuer mes achats</a><br></p>
+<div class="info-text"> 
+    <span>-- article(s) dans votre panier</span>
+    <a class="continue">Continuer mes achats</a>
+</div>
 <br>
 <form>
-    <table style="border-width: 2px;border-color: darkblue;">
-        <tr><td>Articles</td><td>Quantité <input type="number" min="1" max="10"></td><td>Prix</td><td><input type="reset" value="Supprimer"></td></tr>
+    <table style="" class='cart-tab' width="50%">
+        <tr class='nom-colonnes'>
+            <td>Articles</td>
+            <td class="text-center">Quantité</td>
+            <td class="text-center">Prix</td>
+            <td class="text-center">Supprimer</td>
+        </tr>
+        <tr>
+            <td width="50%">
+                <img class="tab-img valign"/>
+                <span class='valign'>Article 1</span>
+            </td>
+            <td class="text-center">10</td>
+            <td class="text-center">5.99€</td>
+            <td class="text-center"><a href="del_panier.php?id=" class="trash-link"><span class="material-icons">delete</span></a></td>
+        </tr>
     </table>
 </form>
 
-
-<p align="center">Total : <b>---€</b>
-<br>
-<br>
-<a class="button">Payer</a><br></p>
+<div class="info-text">
+    <p>Total : <b>---€</b></p>
+    <a class="payment">Payer</a>
+</div>
 </body>
 </html>

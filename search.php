@@ -2,7 +2,6 @@
 <?php include('db_class.php'); ?>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="res/nav.css">
     <link rel="stylesheet" href="res/step1.css">
