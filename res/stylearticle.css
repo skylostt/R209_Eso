@@ -13,15 +13,15 @@ h1 {
   
 .article p.meta time {
   font-style: normal;
-  }
+}
   
   /* Scale Image*/
 .article img {
-  margin-bottom: 20px;
-  object-fit: contain;
-  width: 500px;
-  height: 500px;
-  margin-left: 10px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    width: 500px;
+    height: 500px;
+    margin-left: 10px;
 }
   
   /* listes t'es erreurs */

@@ -1,3 +1,7 @@
+body {
+    margin: 10px;
+}
+
 .ranger {
     display: inline-block;
     align-items: center;
@@ -14,3 +18,15 @@
     text-decoration: none;
 }
 
+.under-img {
+    text-align: center;
+}
+
+.see-more {
+    color: black;
+    text-decoration: none;
+}
+
+.see-more:hover {
+    text-decoration: underline;
+}
