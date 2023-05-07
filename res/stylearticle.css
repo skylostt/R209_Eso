@@ -6,15 +6,6 @@ h1 {
     text-align: center;
 }
 
-.article p.meta {
-  font-style: italic;
-  color: #888;
-}
-  
-.article p.meta time {
-  font-style: normal;
-}
-  
   /* Scale Image*/
 .article img {
     margin-bottom: 20px;
@@ -24,47 +15,26 @@ h1 {
     margin-left: 10px;
 }
   
-  /* listes t'es erreurs */
-.article ul {
-  margin-bottom: 20px;
-}
-  
-  /* tableau/détails du produit*/
-.article table {
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-  
-  
-.article td {
-  padding: 5px;
-  border: 1px solid #ddd;
-}
-  
   /* Prix et bouton d'ajout panier*/
 .article p strong {
-  color: darkblue;
-  font-size: 1.5em;
-  display: inline-block;
+    color: darkblue;
+    font-size: 1.5em;
+    display: inline-block;
 }
   
   /*button */
 .article .submit_article {
-  background-color: darkblue;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  font-size: 1.2em;
-  cursor: pointer;
-  text-decoration: none;
-  margin-top: 5px;
+    background-color: darkblue;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 5px;
 
 }
   
-.article .submit_article {
-  background-color: rgb(1, 1, 114);
-}
-
 .article {
     display: flex;
     margin-top: 5%;
@@ -84,9 +54,9 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-  background-color: #eee;
-  text-align: center;
-  font-size: 0.8em;
-  color: #888;
-  padding: 20px;
+    background-color: #eee;
+    text-align: center;
+    font-size: 0.8em;
+    color: #888;
+    padding: 20px;
 }
