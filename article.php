@@ -27,17 +27,21 @@ $reponse = $db->query($req)->fetchArray();
 			    <h2 class="details">Achat du produit</h2>
 
                 <p>Prix : <strong><?php echo $reponse['prix']; ?>€</strong></p>
-                <form>
-                <label>Quantité</label>
-                <input type="number" name="qte" min="1" max="10" style="width: 40px;" value="1"><br>
-                <button type='submit' class="submit_article">Ajouter au panier</button>
-                </form>
+<?php
+if ($reponse['quantite'] > 0) {
+    echo '<form>';
+    echo '<label>Quantité</label>';
+    echo '<input type="number" name="qte" min="1" max="'.$reponse['quantite'].'" style="width: 40px;" value="1"><br>';
+    echo '<button type="submit" class="submit_article">Ajouter au panier</button>';
+    echo '</form>';
+} else {
+    echo "Ce produit est en rupture de stock.";
+}
 
+?>
             </div>
+        </div>
 
-            </div>
-
-		</div>
 <?php $db->close(); ?>
 	<div class='footer'>
         Droit d'auteur © 2056 Nom du site. Tous droits réservés.
