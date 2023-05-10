@@ -6,7 +6,7 @@ if (isset($_POST['username']) AND isset($_POST['password']))
     $db = new MyDB();
     $req = "SELECT password FROM Utilisateurs WHERE username='".$_POST['username']."';";
     $pass = $db->query($req)->fetchArray()['password'];
-    if ( isset($pass) AND $pass != "" AND $pass == sha1($_POST['password']))
+    if ( isset($pass) AND $pass != "" AND $pass == hash('sha512', $_POST['password']))
     {
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['message'] = "Vous avez bien été connecté";
