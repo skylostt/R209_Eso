@@ -30,8 +30,8 @@ while ($donnees=$reponse_nav->fetchArray())
             </select>
             <input type='text' class='searchbar' name='query' <?php echo isset($_GET['query']) ? 'value="'.$_GET['query'].'"' : '';?>><input type='submit' class='submitsearch' value='Rechercher'>
         </form>
-        <a class='bar_elt' href=''>
-            <span class="material-icons">person</span><span class='valign-link'>Mon compte</span>
+        <a class='bar_elt' href='login_user.php'>
+            <span class="material-icons">person</span><span class='valign-link' href="login_user.php">Mon compte</span>
         </a>
         <a class='bar_elt' href=''>
             <span class="material-icons">receipt_long</span><span class='valign-link'>Mes commandes</span>
@@ -46,7 +46,7 @@ $req_nav = 'SELECT * FROM Categories';
 $reponse_nav = $db_nav->query($req_nav);
 while ($donnees=$reponse_nav->fetchArray())
 {
-    echo '<a href="search.php?cat='.$donnees['idCat'].'">'.$donnees['titre'].'</a>';
+    echo '<a href="search.php?cat='.$donnees['idCat'].'" class="item_cat_bar">'.$donnees['titre'].'</a>';
 }
 
 $db_nav->close();

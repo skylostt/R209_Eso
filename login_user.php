@@ -1,32 +1,30 @@
 <?php
 session_start();
+include('db_class.php');
 if (isset($_POST['username']) AND isset($_POST['password']))
 {
-    $bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-    $pass = $bdd->query("SELECT password FROM users WHERE username='".$_POST['username']."';")->fetch()['password'];
-    if ($pass != "" AND $pass == sha1($_POST['password']))
+    $db = new MyDB();
+    $req = "SELECT password FROM Utilisateurs WHERE username='".$_POST['username']."';";
+    $pass = $db->query($req)->fetchArray()['password'];
+    if ( isset($pass) AND $pass != "" AND $pass == sha1($_POST['password']))
     {
         $_SESSION['username'] = $_POST['username'];
-        if ($_POST["store"])
-        {
-            setcookie("username", $_POST['username'], time()+365*24*3600);
-            setcookie("password", $_POST['password'], time()+365*24*3600);
-        }
-        else
-        {
-            setcookie("username", "");
-            setcookie("password", "");
-        }
-        header('Location: /');
+        $_SESSION['message'] = "Vous avez bien été connecté";
+        $_SESSION['connected'] = TRUE;
+        header('Location: index.php');
     }
     else
     {
         $_SESSION["error"] = "Erreur, mot de passe ou nom d'utilisateur invalide.";
-        header('Location: login');
+        header('Location: login.php');
     }
+}
+else if (isset($_SESSION["username"]) AND isset($_SESSION["connected"]))
+{
+    echo "vous êtez déjà connecté";
 }
 else
 {
-    header('Location: login');
+    header('Location: login.php');
 }
 ?>

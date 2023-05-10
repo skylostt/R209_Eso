@@ -1,18 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    font-family: 'Ubuntu';
+    margin: 10px;
+    font-family: 'Noto Sans', Sans-Serif;
 }
 
 a {
     text-decoration: none;
     color: black;
-}
-
-input {
-    font-family: 'Ubuntu';
 }
 
 hr {
@@ -101,4 +95,8 @@ hr {
 
 .connect-button {
     margin-top: 10px;
+}
+
+.erreur_span {
+    color: red;
 }

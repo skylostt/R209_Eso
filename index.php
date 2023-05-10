@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <?php include('db_class.php'); ?>
 <html lang="fr">

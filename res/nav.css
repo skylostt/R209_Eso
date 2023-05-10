@@ -26,14 +26,14 @@ nav {
     padding: 7px;
 }
 
-.cat_bar a {
+.item_cat_bar {
     color: black;
     text-decoration: none;
     width: 10px;
     margin-right: 10px;
 }
 
-.cat_bar a:hover {
+.item_cat_bar:hover {
     color: #333;
     text-decoration: underline;
 }
@@ -94,6 +94,7 @@ nav {
 
 .valign-link {
     vertical-align: middle;
+    text-decoration: none;
 }
 
 .valign-link:hover {

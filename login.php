@@ -1,18 +1,17 @@
-<?php session_start(); ?>
+<?php
+session_start();
+include("db_class.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="res/style_login.css">
     <title>File Upload</title>
-</head>
-<body>
-    <form action="/login_user.php" method="POST" class="log_reg_form">
-        <span style="color: red;">
-        </span>
+
+<?php include('nav.php'); ?>
+    <form action="login_user.php" method="POST" class="log_reg_form">
+        <span class="erreur_span"><?php echo $_SESSION["error"]; $_SESSION["error"] = ""; ?></span>
         <h1>Se connecter</h1>
         <div>
             <span class="material-icons" style="display: inline-block; vertical-align: middle;">person</span>
@@ -24,7 +23,7 @@
         </div>
         <button type="submit" class="connect-button" size="100" maxlength="100">Se connecter</button>
     </form>
-    <form action="/register" method="POST" class="log_reg_form">
+    <form action="register_user.php" method="POST" class="log_reg_form">
         <h1>S'inscrire</h1>
         <div>
         <span class="material-icons" style="display: inline-block; vertical-align: middle;">person</span>
