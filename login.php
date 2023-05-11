@@ -11,7 +11,18 @@ include("db_class.php");
 
 <?php include('nav.php'); ?>
     <form action="login_user.php" method="POST" class="log_reg_form">
-        <span class="erreur_span"><?php echo $_SESSION["error"]; $_SESSION["error"] = ""; ?></span>
+        <span class="erreur_span">
+<?php
+echo isset($_SESSION["error"]) ? $_SESSION["error"] : "";
+$_SESSION["error"] = "";
+?>
+        </span>
+        <span class="ok_span">
+<?php
+echo isset($_SESSION["ok"]) ? $_SESSION["ok"] : "";
+$_SESSION["ok"] = "";
+?>
+        </span>
         <h1>Se connecter</h1>
         <div>
             <span class="material-icons" style="display: inline-block; vertical-align: middle;">person</span>

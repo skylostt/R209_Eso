@@ -101,3 +101,7 @@ hr {
 .erreur_span {
     color: red;
 }
+
+.ok_span {
+    color: green;
+}
