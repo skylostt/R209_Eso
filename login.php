@@ -1,6 +1,10 @@
 <?php
 session_start();
 include("db_class.php");
+
+if (isset($_SESSION['username'])) {
+    header('location: account.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -8,6 +12,7 @@ include("db_class.php");
     <meta charset="UTF-8">
     <link rel="stylesheet" href="res/style_login.css">
     <title>File Upload</title>
+
 
 <?php include('nav.php'); ?>
     <form action="login_user.php" method="POST" class="log_reg_form">
