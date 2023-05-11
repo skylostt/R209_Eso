@@ -31,7 +31,7 @@ while ($donnees=$reponse_nav->fetchArray())
             <input type='text' class='searchbar' name='query' <?php echo isset($_GET['query']) ? 'value="'.$_GET['query'].'"' : '';?>><input type='submit' class='submitsearch' value='Rechercher'>
         </form>
         <a class='bar_elt' href='login_user.php'>
-            <span class="material-icons">person</span><span class='valign-link' href="login_user.php">Mon compte</span>
+        <span class="material-icons">person</span><span class='valign-link' href="login_user.php"><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : "Mon compte"; ?></span>
         </a>
         <a class='bar_elt' href=''>
             <span class="material-icons">receipt_long</span><span class='valign-link'>Mes commandes</span>
