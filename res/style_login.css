@@ -30,13 +30,6 @@ hr {
     vertical-align: middle;
 }
 
-
-#getFile {
-    opacity: 0;
-    position: absolute;
-    z-index: -1;
-}
-
 .nav-icon {
     display: inline-block;
     vertical-align: middle;
@@ -67,15 +60,17 @@ hr {
     margin-bottom: 5px;
 }
 
-.log_reg_form button {
+.form_button_link {
     background-color: darkblue;
     border: 1px solid transparent;
     border-radius: 3px;
     padding: 5px;
     color: white;
+    text-decoration: none;
+    font-size: 13px;
 
 }
-.log_reg_form button:hover {
+.form_button_link:hover {
     transition: 0.3s;
     background-color: #000044;
 }
@@ -104,4 +99,8 @@ hr {
 
 .ok_span {
     color: green;
+}
+
+.disco_div {
+    text-align: center;
 }

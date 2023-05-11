@@ -29,12 +29,16 @@ $_SESSION["ok"] = "";
             <h2>Nouveau mot de passe</h2>
             <input type="password" name="current_password" placeholder="Mot de passe actuel" required/><br>
             <input type="password" name="new_password" placeholder="Nouveau mot de passe" required/><br>
-            <button type="submit">Changer de mot de passe</button>
+            <button type="submit" class="form_button_link">Changer de mot de passe</button>
         </form>
+        <div class='disco_div'>
+            <h2>Se déconnecter</h2>
+            <a class='form_button_link' href='disconnect.php'>Déconnection</a>
+        </div>
         <form class="log_reg_form" action="delete_account.php" method="POST">
             <h2>Supprimer votre compte</h2>
             <input placeholder="Mot de passe" type="password" name="password" required/><br>
-            <button type="submit">Supprimer le compte</button>
+            <button type="submit" class="form_button_link">Supprimer le compte</button>
         </form>
 
     </body>

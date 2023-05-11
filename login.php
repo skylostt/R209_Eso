@@ -37,7 +37,7 @@ $_SESSION["ok"] = "";
             <span class="material-icons" style="display: inline-block; vertical-align: middle;">lock</span>
             <input placeholder="Mot de passe" type="password" name="password" required/><br>
         </div>
-        <button type="submit" class="connect-button" size="100" maxlength="100">Se connecter</button>
+        <button type="submit" class="connect-button form_button_link" size="100" maxlength="100">Se connecter</button>
     </form>
     <form action="register_user.php" method="POST" class="log_reg_form">
         <h1>S'inscrire</h1>
@@ -53,7 +53,7 @@ $_SESSION["ok"] = "";
         <span class="material-icons" style="display: inline-block; vertical-align: middle;">lock</span>
         <input placeholder="Mot de passe" type="password" name="password" required/><br>
         </div>
-        <button type="submit" class="connect-button">S'inscrire</button>
+        <button type="submit" class="connect-button form_button_link">S'inscrire</button>
     </form>
 </body>
 </html>
