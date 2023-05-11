@@ -1,20 +1,33 @@
 <?php
 session_start();
+include('db_class.php');
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="">
-        <title></title>
-    </head>
-    <body>
-
+        <link rel="stylesheet" href="res/style_login.css">
+        <link rel="stylesheet" href="res/font.css">
+        <title>Paramètres du compte</title>
+<?php
+include('nav.php');
+?>
     <h1 align="center">Paramètres de <?php echo $_SESSION['username']; ?></h1>
         <form class="log_reg_form" action="change_password.php" method="POST">
+            <span class='erreur_span'>
+<?php
+echo isset($_SESSION["error"]) ? $_SESSION["error"] : "";
+$_SESSION["error"] = "";
+?>
+            </span>
+            <span class='ok_span'>
+<?php
+echo isset($_SESSION["ok"]) ? $_SESSION["ok"] : "";
+$_SESSION["ok"] = "";
+?>
+            </span>
             <h2>Nouveau mot de passe</h2>
-            <input type="password" name="current_password" placeholder="Mot de passe acutel" required/><br>
+            <input type="password" name="current_password" placeholder="Mot de passe actuel" required/><br>
             <input type="password" name="new_password" placeholder="Nouveau mot de passe" required/><br>
             <button type="submit">Changer de mot de passe</button>
         </form>

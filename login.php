@@ -47,7 +47,7 @@ $_SESSION["ok"] = "";
         </div>
         <div>
             <span class="material-icons" style="display: inline-block; vertical-align: middle;">mail</span>
-            <input placeholder="Adresse email" type="text" name="email" required/><br>
+            <input placeholder="Adresse email" type="email" name="email" required/><br>
         </div>
         <div>
         <span class="material-icons" style="display: inline-block; vertical-align: middle;">lock</span>
