@@ -36,7 +36,7 @@ while ($donnees=$reponse_nav->fetchArray())
         <a class='bar_elt' href=''>
             <span class="material-icons">receipt_long</span><span class='valign-link'>Mes commandes</span>
         </a>
-        <a class='bar_elt' href=''>
+        <a class='bar_elt' href='panier.php'>
             <span class="material-icons">shopping_basket</span><span class='valign-link'>Mon panier</span>
         </a>
     </div>

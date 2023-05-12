@@ -30,10 +30,10 @@ $reponse = $db->query($req)->fetchArray();
                 <p>Prix : <strong><?php echo $reponse['prix']; ?>€</strong></p>
 <?php
 if ($reponse['quantite'] > 0) {
-    echo '<form method="POST" action="add_article.php">';
+    echo '<form method="GET" action="add_to_cart.php">';
     echo '<label>Quantité</label>';
     echo '<input type="number" name="qte" min="1" max="'.$reponse['quantite'].'" value="1" style="width: 40px;"><br>';
-    echo '<button type="submit" class="submit_article" value="'.$reponse['idProd'].'" name="id">Ajouter au panier</button>';
+    echo '<button type="submit" class="submit_article" value="'.$reponse['idProd'].'" name="prod">Ajouter au panier</button>';
     echo '</form>';
 } else {
     echo "Ce produit est en rupture de stock.";
