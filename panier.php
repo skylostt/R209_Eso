@@ -73,7 +73,17 @@ while ($donnees=$reponse->fetchArray()) {
 <div class="info-text">
     <p>Total : <b>
 <?php
-echo "total";
+if (isset($_SESSION['username'])) {
+    $req = "SELECT Paniers.quantite, prix FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser JOIN Articles ON Paniers.idProd = Articles.idProd WHERE username='".$_SESSION['username']."';";
+} else {
+    $req = "SELECT Paniers.quantite, prix FROM Paniers JOIN Articles ON Paniers.idProd = Articles.idProd WHERE idSession='".$sid."';";
+}
+$reponse = $db->query($req);
+$somme = 0;
+while ($donnees=$reponse->fetchArray()) {
+    $somme += $donnees['quantite']*$donnees['prix'];
+}
+echo $somme."€";
 ?>
 </b></p>
     <a class="payment" href="">Payer</a>
