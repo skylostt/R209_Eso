@@ -35,9 +35,10 @@ CREATE TABLE Articles (
 DROP TABLE IF EXISTS Paniers;
 
 CREATE TABLE Paniers (
-    idPanier INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    idSession INTEGER NOT NULL,
     idProd INTEGER NOT NULL,
-    idUser INTEGER NOT NULL,
+    idUser INTEGER,
     quantite INTEGER NOT NULL,
     FOREIGN KEY (idUser) REFERENCES Utilisateurs (idUser),
     FOREIGN KEY (idProd) REFERENCES Articles (idProd)
@@ -47,7 +48,6 @@ DROP TABLE IF EXISTS Commandes;
 
 CREATE TABLE Commandes (
     idCom INTEGER PRIMARY KEY AUTOINCREMENT,
-    idPanier INTEGER NOT NULL,
     idUser INTEGER NOT NULL,
     adresse TEXT NOT NULL,
     FOREIGN KEY (idPanier) REFERENCES Paniers (idPanier),
