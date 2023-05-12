@@ -38,14 +38,15 @@ if (isset($_SESSION['username'])) {
 while ($donnees=$reponse->fetchArray()) {
     $infos_req = "SELECT * FROM Articles WHERE idProd='".$donnees['idProd']."';";
     $infos = $db->query($infos_req)->fetchArray();
+    $price = $infos['prix']*$donnees['quantite'];
     echo '<tr>';
     echo '<td width="50%">';
     echo '<img class="tab-img valign" src="data:image/jpeg;base64,'.$infos['b64img'].'"/>';
     echo '<span class="valign">'.$infos['nom'].'</span>';
     echo '</td>';
     echo '<td class="text-center">'.$donnees['quantite'].'</td>';
-    echo '<td class="text-center">'.$infos['prix'].'€</td>';
-    echo '<td class="text-center"><a href="del_from_cart.php?id=" class="trash-link"><span class="material-icons">delete</span></a></td>';
+    echo '<td class="text-center">'.$price.'€ ('.$infos['prix'].'€/u)</td>';
+    echo '<td class="text-center"><a href="del_from_cart.php?id='.$donnees['idProd'].'" class="trash-link"><span class="material-icons">delete</span></a></td>';
     echo '</tr>';
 }
 ?>
