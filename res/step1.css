@@ -34,3 +34,11 @@ body {
 .prod_img {
     object-fit: cover;
 }
+
+.erreur_span {
+    color: red;
+}
+
+.ok_span {
+    color: green;
+}

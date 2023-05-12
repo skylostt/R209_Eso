@@ -16,6 +16,20 @@ include('db_class.php');
 <?php include('nav.php'); ?>
 <h1 style="color:darkblue;" align="center">Votre panier</h1>
 <br>
+<div align="center">
+        <span class="erreur_span" align="center">
+<?php
+echo isset($_SESSION["error"]) ? $_SESSION["error"] : "";
+$_SESSION["error"] = "";
+?>
+        </span>
+        <span class="ok_span" align="center">
+<?php
+echo isset($_SESSION["ok"]) ? $_SESSION["ok"] : "";
+$_SESSION["ok"] = "";
+?>
+        </span>
+</div>
 <div class="info-text">
     <span>-- article(s) dans votre panier</span>
     <a class="continue">Continuer mes achats</a>
@@ -30,9 +44,13 @@ include('db_class.php');
     </tr>
 <?php
 $db = new MyDB();
+$sid = session_id();
 
 if (isset($_SESSION['username'])) {
-    $req = "SELECT * FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['username']."'";
+    $req = "SELECT * FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['username']."';";
+    $reponse = $db->query($req);
+} else {
+    $req = "SELECT * FROM Paniers WHERE idSession='".$sid."';";
     $reponse = $db->query($req);
 }
 while ($donnees=$reponse->fetchArray()) {

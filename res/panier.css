@@ -1,3 +1,7 @@
+body {
+    margin: 10px;
+}
+
 .nom-colonnes {
     background-color: lightgray;
     border: none;
@@ -49,3 +53,14 @@ td {
     object-fit: cover;
     margin-right: 2%;
 }
+
+.erreur_span {
+    color: red;
+    text-align: center;
+}
+
+.ok_span {
+    color: green;
+    text-align: center;
+}
+

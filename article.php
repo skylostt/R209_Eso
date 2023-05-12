@@ -19,6 +19,19 @@ $reponse = $db->query($req)->fetchArray();
 <?php include('nav.php'); ?>
 
         <h1><?php echo 'Article ~ '.$reponse['nom']; ?></h1>
+
+        <span class="erreur_span">
+<?php
+echo isset($_SESSION["error"]) ? $_SESSION["error"] : "";
+$_SESSION["error"] = "";
+?>
+        </span>
+        <span class="ok_span">
+<?php
+echo isset($_SESSION["ok"]) ? $_SESSION["ok"] : "";
+$_SESSION["ok"] = "";
+?>
+        </span>
 		<div class='article'>
             <img src="data:image/jpeg;base64,<?php echo $reponse['b64img']; ?>" alt="Image de l'article">
             <div class="div-second">
