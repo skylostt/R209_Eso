@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('db_class.php');
+$sid = session_id();
 ?>
 <!DOCTYPE html>
 
@@ -31,7 +32,18 @@ $_SESSION["ok"] = "";
         </span>
 </div>
 <div class="info-text">
-    <span>-- article(s) dans votre panier</span>
+    <span>
+<?php
+$db = new MyDB();
+if (isset($_SESSION['username'])) {
+    $req = "SELECT COUNT(*) FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['username']."';";
+} else {
+    $req = "SELECT COUNT(*) FROM Paniers WHERE idSession='".$sid."';";
+}
+echo $db->query($req)->fetchArray()['COUNT(*)'];
+echo " article(s) dans votre panier";
+?>
+    </span>
     <a class="continue">Continuer mes achats</a>
 </div>
 <br>
@@ -43,8 +55,6 @@ $_SESSION["ok"] = "";
         <td class="text-center">Supprimer</td>
     </tr>
 <?php
-$db = new MyDB();
-$sid = session_id();
 
 if (isset($_SESSION['username'])) {
     $req = "SELECT * FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['username']."';";
