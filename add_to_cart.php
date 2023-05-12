@@ -10,7 +10,7 @@ if (isset($_GET['prod']) AND isset($_GET['qte']) AND is_numeric($_GET['prod']) A
     $q_dispo = $db->query("SELECT quantite FROM Articles WHERE idProd='".$_GET['prod']."';")->fetchArray()['quantite'];
     // On regarde si le produit à ajouter est déjà dans le panier
     if (isset($_SESSION['username'])) {
-        $not_cart_req = "SELECT idProd FROM Paniers JOIN Utilisateurs ON Utilisateurs.idUser = Panier.idUser WHERE idProd='".$_GET['prod']."' AND username='".$_SESSION['username']."'";
+        $not_cart_req = "SELECT idProd FROM Paniers JOIN Utilisateurs ON Utilisateurs.idUser = Paniers.idUser WHERE idProd='".$_GET['prod']."' AND username='".$_SESSION['username']."'";
         $is_not_in_cart = empty($db->query($not_cart_req)->fetchArray());
     } else {
         $not_cart_req = "SELECT idProd FROM Paniers WHERE idProd='".$_GET['prod']."' AND idSession='".$sid."'";
@@ -24,12 +24,13 @@ if (isset($_GET['prod']) AND isset($_GET['qte']) AND is_numeric($_GET['prod']) A
             $userid = $db->query($req_user_id)->fetchArray()['idUser'];
             $req = "INSERT INTO Paniers (idSession, idProd, idUser, quantite) VALUES ('".$sid."', '".$_GET['prod']."', '".$userid."', '".$_GET['qte']."');";
             $db->query($req);
-            $_SESSION['ok'] = "L'article a bien été ajouté au panier.";
         } else {
             $req = "INSERT INTO Paniers (idSession, idProd, quantite) VALUES ('".$sid."', '".$_GET['prod']."', '".$_GET['qte']."');";
             $db->query($req);
-            $_SESSION['ok'] = "L'article a bien été ajouté au panier.";
         }
+        $req_change_qte = "UPDATE Articles SET quantite=".$q_dispo-$_GET['qte']." WHERE idProd='".$_GET['prod']."';";
+        $db->query($req_change_qte);
+        $_SESSION['ok'] = "L'article a bien été ajouté au panier.";
     } else {
         $_SESSION['error'] = "Erreur, soit le stock est trop faible, soit l'article n'existe pas, ou soit cet article est déjà dans votre panier.";
     }

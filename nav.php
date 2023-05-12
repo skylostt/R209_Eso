@@ -33,7 +33,7 @@ while ($donnees=$reponse_nav->fetchArray())
         <a class='bar_elt' href='login.php'>
         <span class="material-icons">person</span><span class='valign-link'><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : "Mon compte"; ?></span>
         </a>
-        <a class='bar_elt' href=''>
+        <a class='bar_elt' href='command.php'>
             <span class="material-icons">receipt_long</span><span class='valign-link'>Mes commandes</span>
         </a>
         <a class='bar_elt' href='panier.php'>

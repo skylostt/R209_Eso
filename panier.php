@@ -96,7 +96,7 @@ while ($donnees=$reponse->fetchArray()) {
 echo $somme."€";
 ?>
 </b></p>
-    <a class="payment" href="">Payer</a>
+    <a class="payment" href="command.php">Commander</a>
 </div>
 </body>
 </html>
