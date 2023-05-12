@@ -8,7 +8,7 @@ if (isset($_SESSION['username']) AND isset($_POST['current_password']) AND isset
     $curr_pass = $db->query($curr_req)->fetchArray()['password'];
     if ($curr_hash === $curr_pass) {
         $new_hash = hash('sha512', $_POST['new_password']);
-        $update_req = "UPDATE Utilisateurs SET password='".$new_hash."' WHERE username='".$_POST['session']."';";
+        $update_req = "UPDATE Utilisateurs SET password='".$new_hash."' WHERE username='".$_SESSION['username']."';";
         $db->query($update_req);
         $_SESSION['ok'] = 'Mot de passe modifié avec succés.';
 
