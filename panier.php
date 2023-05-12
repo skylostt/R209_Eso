@@ -9,8 +9,8 @@ include('db_class.php');
     <meta charset="UTF-8">
     <link>
     <title>Votre panier</title>
-    <link rel="stylesheet" href="../res/font.css">
-    <link rel="stylesheet" href="../res/panier.css">
+    <link rel="stylesheet" href="res/font.css">
+    <link rel="stylesheet" href="res/panier.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <?php include('nav.php'); ?>
@@ -53,7 +53,11 @@ while ($donnees=$reponse->fetchArray()) {
 </table>
 
 <div class="info-text">
-    <p>Total : <b>---€</b></p>
+    <p>Total : <b>
+<?php
+echo "total";
+?>
+</b></p>
     <a class="payment" href="">Payer</a>
 </div>
 </body>

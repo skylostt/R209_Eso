@@ -30,3 +30,7 @@ body {
 .see-more:hover {
     text-decoration: underline;
 }
+
+.prod_img {
+    object-fit: cover;
+}
