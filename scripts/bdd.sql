@@ -50,7 +50,6 @@ CREATE TABLE Commandes (
     idCom INTEGER PRIMARY KEY AUTOINCREMENT,
     idUser INTEGER NOT NULL,
     adresse TEXT NOT NULL,
-    FOREIGN KEY (idPanier) REFERENCES Paniers (idPanier),
     FOREIGN KEY (idUser) REFERENCES Utilisateurs (idUser)
 );
 
