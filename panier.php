@@ -44,7 +44,7 @@ echo $db->query($req)->fetchArray()['COUNT(*)'];
 echo " article(s) dans votre panier";
 ?>
     </span>
-    <a class="continue">Continuer mes achats</a>
+    <a class="continue" href="index.php">Continuer mes achats</a>
 </div>
 <br>
 <table style="" class='cart-tab' width="50%">

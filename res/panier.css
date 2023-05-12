@@ -25,6 +25,13 @@ td {
 
 .continue {
     margin-left: 5%;
+    color: black;
+    text-decoration: none;
+}
+
+.continue:hover {
+    color: #131313;
+    text-decoration: underline;
 }
 
 .info-text {
