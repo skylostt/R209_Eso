@@ -13,18 +13,12 @@
 <body>
 <h1>Résultats</h1>
 <?php
-/*
-class MyDB extends SQLite3
-{
-    function __construct()
-    {
-        $this->open('bdd.db');
-    }
-}*/
 $db = new MyDB();
 $query = isset($_GET['query']) ? $_GET['query'] : '';
-$req = 'SELECT * FROM Articles WHERE nom LIKE "%'.$query.'%" AND (idCat='.$_GET['cat'].' OR '.$_GET['cat'].'=0)';
-$reponse = $db->query($req);
+$req = $db->prepare('SELECT * FROM Articles WHERE nom LIKE :query AND (idCat=:cat OR :cat="0")');
+$req->bindValue(':query', '%'.$query.'%');
+$req->bindValue(':cat', $_GET['cat']);
+$reponse = $req->execute();
 while ($donnees=$reponse->fetchArray())
 {
     echo '<div class="ranger" style="line-height: 22px;">';
@@ -39,7 +33,6 @@ while ($donnees=$reponse->fetchArray())
     echo '</div>';
 }
 $db->close();
-
 ?>
 </body>
 </html>

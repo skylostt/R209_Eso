@@ -14,14 +14,18 @@ if (! isset($_POST['email']) OR ! isset($_POST['password']) OR ! isset($_POST['u
     }
     $hash_pass = hash('sha512', $_POST['password']);
     $db = new MyDB();
-    $req = "SELECT * FROM Utilisateurs WHERE username='".$_POST['username']."';";
-    $check_array = $db->query($req)->fetchArray();
+    $req = $db->prepare("SELECT * FROM Utilisateurs WHERE username=:username;");
+    $req->bindValue(':username', $_POST['username']);
+    $check_array = $req->execute()->fetchArray();
     if (! empty($check_array)) {
         $_SESSION['error'] = "Erreur, l'utilisateur ".$_POST['username']." existe déjà !";
         header('location: login.php');
     } else {
-        $insert = 'INSERT INTO Utilisateurs (username, mail, password) VALUES ("'.$_POST["username"].'", "'.$_POST["email"].'", "'.$hash_pass.'");';
-        $db->query($insert);
+        $insert = $db->prepare('INSERT INTO Utilisateurs (username, mail, password) VALUES (:username, :email, :hash);');
+        $insert->bindValue(':username', $_POST["username"]);
+        $insert->bindValue(':email', $_POST["email"]);
+        $insert->bindValue(':hash', $hash_pass);
+        $insert->execute();
         $db->close();
         $_SESSION['ok'] = "Inscription réussie.";
         header('location: login.php');

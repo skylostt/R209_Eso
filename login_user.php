@@ -4,8 +4,9 @@ include('db_class.php');
 if (isset($_POST['username']) AND isset($_POST['password']))
 {
     $db = new MyDB();
-    $req = "SELECT password FROM Utilisateurs WHERE username='".$_POST['username']."';";
-    $pass = $db->query($req)->fetchArray()['password'];
+    $req = $db->prepare("SELECT password FROM Utilisateurs WHERE username=:username;");
+    $req->bindValue(':username', $_POST['username']);
+    $pass = $req->execute()->fetchArray()['password'];
     if ( isset($pass) AND $pass != "" AND $pass == hash('sha512', $_POST['password']))
     {
         $_SESSION['username'] = $_POST['username'];

@@ -4,12 +4,14 @@ if (isset($_SESSION['username']) AND isset($_POST['password'])) {
     include('db_class.php');
     $db = new MyDB();
     $pass_hash = hash('sha512', $_POST['password']);
-    $pass_req = "SELECT password FROM Utilisateurs WHERE username='".$_SESSION['username']."'";
-    $pass = $db->query($pass_req)->fetchArray()['password'];
+    $pass_req = $db->prepare("SELECT password FROM Utilisateurs WHERE username=:username;");
+    $pass_req->bindValue(':username', $_SESSION['username']);
+    $pass = $pass_req->execute()->fetchArray()['password'];
     if ($pass_hash === $pass) {
-        $new_hash = hash('sha512', $_POST['new_password']);
-        $del_req = "DELETE FROM Utilisateurs WHERE password='".$pass_hash."'";
-        $db->query($del_req);
+        $del_req = $db->prepare("DELETE FROM Utilisateurs WHERE username=:username AND password=:hash;");
+        $del_req->bindValue(":username", $_SESSION['username']);
+        $del_req->bindValue(":hash", $pass_hash);
+        $del_req->execute();
         unset($_SESSION['username']);
         $_SESSION['ok'] = "Compte supprimé avec succès.";
         header('location: login.php');
