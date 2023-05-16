@@ -24,58 +24,55 @@ include('nav.php');
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Catégorie 1</td>
-                    <td>
-                        <a class="admin_link" href="edit_cat.php?cat=">
-                            <span class="edit_text">Editer</span>
-                            <span class="material-icons" style="display: inline-block; vertical-align: middle;">edit</span>
-                        </a>
-                    </td>
-				</tr>
-				<tr>
-					<td>Catégorie 2</td>
-                    <td>
-                        <a class="admin_link" href="edit_cat.php?cat=">
-                            <span class="edit_text">Editer</span>
-                            <span class="material-icons" style="display: inline-block; vertical-align: middle;">edit</span>
-                        </a>
-                    </td>
-				</tr>
+<?php
+$categories = $db->query("SELECT * FROM Categories;");
+while ($donnees=$categories->fetchArray()) {
+    echo '<tr>';
+    echo '<td>'.$donnees['titre'].'</td>';
+    echo '<td>';
+    echo '<a class="admin_link" href="edit_cat.php?cat='.$donnees['idCat'].'">';
+    echo '<span class="edit_text">Editer</span>';
+    echo '<span class="material-icons" style="display: inline-block; vertical-align: middle;">edit</span>';
+    echo '</a>';
+    echo '</td>';
+    echo '</tr>';
+}
+?>
 			</tbody>
 		</table>
+        <a class="admin_link edit_text" href="add_cat.php">Ajouter une catégorie</a>
 		<h2>Editer un Article</h2>
 		<table>
 			<thead>
 				<tr>
-					<th>Titre de l'article</th>
+					<th>Article</th>
 					<th>Catégorie</th>
+					<th>Quantité</th>
+					<th>Prix</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Article 1</td>
-					<td>Catégorie 1</td>
-                    <td>
-                        <a class="admin_link">
-                            <span class="edit_text">Editer</span>
-                            <span class="material-icons" style="display: inline-block; vertical-align: middle;">edit</span>
-                        </a>
-                    </td>
-				</tr>
-				<tr>
-					<td>Article 2</td>
-					<td>Catégorie 2</td>
-                    <td>
-                        <a class="admin_link">
-                            <span class="edit_text">Editer</span>
-                            <span class="material-icons" style="display: inline-block; vertical-align: middle;">edit</span>
-                        </a>
-                    </td>
-				</tr>
+<?php
+$articles = $db->query("SELECT * FROM Articles");
+while ($donnees=$articles->fetchArray()) {
+    echo '<tr>';
+    echo '<td>'.$donnees['nom'].'</td>';
+    echo '<td>'.$donnees['idCat'].'</td>';
+    echo '<td>'.$donnees['quantite'].'</td>';
+    echo '<td>'.$donnees['prix'].'€</td>';
+    echo '<td>';
+    echo '<a class="admin_link" href="edit_article.php?id='.$donnees['idProd'].'">';
+    echo '<span class="edit_text">Editer</span>';
+    echo '<span class="material-icons" style="display: inline-block; vertical-align: middle;">edit</span>';
+    echo '</a>';
+    echo '</td>';
+    echo '</tr>';
+}
+?>
 			</tbody>
 		</table>
+        <a class="admin_link edit_text" href="add_article.php">Ajouter un article</a>
 		<h2>Liste des utilisateurs</h2>
 		<ul>
 <?php
@@ -84,7 +81,7 @@ while ($donnees=$users->fetchArray()) {
     echo '<li>';
     echo '<a class="admin_link" href="ban_user.php?id='.$donnees['idUser'].'">';
     echo '<span style="vertical-align: middle;">'.$donnees['username'].' -- </span>';
-    echo '<span class="edit_text">Bannir</span>';
+    echo '<span class="edit_text">Bannir </span>';
     echo '<span class="material-icons" style="display: inline-block; vertical-align: middle;">gavel</span>';
     echo '</a>';
     echo '</li>';

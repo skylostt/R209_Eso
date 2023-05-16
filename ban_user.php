@@ -11,7 +11,7 @@ if (isset($_SESSION['perm']) AND isset($_GET['id']) AND $_SESSION['perm'] === 'a
         $del_req = $db->prepare("DELETE FROM Utilisateurs WHERE idUser=:id;");
         $del_req->bindValue(':id', $_GET['id']);
         $del_req->execute();
-        $_SESSION['ok'] = "L'utilisateur a bien été banni."
+        $_SESSION['ok'] = "L'utilisateur a bien été banni.";
     } else {
         $_SESSION['error'] = "Erreur, l'utilisateur renseigné n'existe pas.";
     }

@@ -114,3 +114,7 @@ li {
     border-radius: 5px;
 }
 
+.center-text {
+    text-align: center;
+    display: block;
+}
