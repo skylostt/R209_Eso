@@ -1,0 +1,83 @@
+body {
+	background-color: #f2f2f2;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	color: #333;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 20px;
+	max-width: 960px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,.1);
+	border-radius: 5px;
+}
+
+button {
+	background-color: darkblue;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.Modify:hover {
+	background-color: #005ea8;
+}
+
+.delete:hover {
+	background-color: #c20202;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.delete
+{
+    background-color: red;
+}
+
+
+label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+input
+{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    }
+    
+    ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    }
+    
+    li {
+    margin-bottom: 10px;
+    }
+    
+    .label-success {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #5cb85c;
+    color: #fff;
+    border-radius: 5px;
+    }
+    
+    .label-danger {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: #fff;
+    border-radius: 5px;
+    }
