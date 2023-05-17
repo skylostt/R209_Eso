@@ -25,6 +25,7 @@ if (empty($values)) {
     header("admin.php");
 }
 ?>
+        <form action="edit_script.php" method="POST" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="article-name">Nom de l'article :</label>
             <input  class="form_input"type="text" id="article-name" name="article-name" value="<?php echo $values['nom'];?>" required>
@@ -47,7 +48,7 @@ if (empty($values)) {
 
 		  <div class="form-group">
 			<label for="article-category-id">Catégorie :</label>
-            <select>
+            <select required>
 <?php
 $cat = $db->query('SELECT idCat, titre FROM Categories');
 while ($donnees=$cat->fetchArray()) {
@@ -59,15 +60,16 @@ while ($donnees=$cat->fetchArray()) {
 
 		  <div class="form-group">
 			<label for="article-image">Image de l'article :</label>
-			<input class="form_input" type="file" id="article-image" name="article-image" required>
+			<input class="form_input" type="file" id="article-image" name="article-image">
 		  </div>
 
 		  <div class="form-group">
 			<form method="post" action="modifier-article.php" enctype="multipart/form-data"></form>
-			<button class="form_button modify" type="submit">Modifier</button>
-            <button class="form_button delete" type="submit">Suprimmer</button>
+			<button class="form_button modify" type="submit" name="mod" value="1">Modifier</button>
+            <button class="form_button delete" type="submit" name="mod" value="2">Supprimer</button>
 		  </div>
 
+        </form>
 	</div>
 </body>
 </html>
