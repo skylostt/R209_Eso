@@ -21,10 +21,11 @@ if (! isset($_POST['email']) OR ! isset($_POST['password']) OR ! isset($_POST['u
         $_SESSION['error'] = "Erreur, l'utilisateur ".$_POST['username']." existe déjà !";
         header('location: login.php');
     } else {
-        $insert = $db->prepare('INSERT INTO Utilisateurs (username, mail, password) VALUES (:username, :email, :hash);');
+        $insert = $db->prepare('INSERT INTO Utilisateurs (username, mail, password, droits) VALUES (:username, :email, :hash, :droits);');
         $insert->bindValue(':username', $_POST["username"]);
         $insert->bindValue(':email', $_POST["email"]);
         $insert->bindValue(':hash', $hash_pass);
+        $insert->bindValue(':droits', 0);
         $insert->execute();
         $db->close();
         $_SESSION['ok'] = "Inscription réussie.";

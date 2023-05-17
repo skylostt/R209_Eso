@@ -2,6 +2,9 @@
 session_start();
 include('db_class.php');
 $db = new MyDB();
+if (! $_SESSION['droits']) {
+    header('location: index.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
