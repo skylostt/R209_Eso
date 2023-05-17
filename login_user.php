@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('db_class.php');
-if (isset($_POST['username']) AND isset($_POST['password']))
+if (isset($_POST['username']) AND isset($_POST['password']) AND ! isset($_SESSION["username"]))
 {
     $db = new MyDB();
     $req = $db->prepare("SELECT * FROM Utilisateurs WHERE username=:username AND password=:password;");
@@ -12,7 +12,6 @@ if (isset($_POST['username']) AND isset($_POST['password']))
     {
         $_SESSION['username'] = $entry['username'];
         $_SESSION['message'] = "Vous avez bien été connecté";
-        $_SESSION['connected'] = TRUE;
         $_SESSION['droits'] = $entry['droits'];
         header('Location: index.php');
     }
@@ -22,7 +21,7 @@ if (isset($_POST['username']) AND isset($_POST['password']))
         header('Location: login.php');
     }
 }
-else if (isset($_SESSION["username"]) AND isset($_SESSION["connected"]))
+else if (isset($_SESSION["username"]))
 {
     echo "vous êtez déjà connecté";
 }

@@ -46,8 +46,15 @@ if (empty($values)) {
 		  </div>
 
 		  <div class="form-group">
-			<label for="article-category-id">ID de la catégorie :</label>
-			<input class="form_input" type="text" id="article-category-id" name="article-category-id" required>
+			<label for="article-category-id">Catégorie :</label>
+            <select>
+<?php
+$cat = $db->query('SELECT idCat, titre FROM Categories');
+while ($donnees=$cat->fetchArray()) {
+    echo '<option value="'.$donnees['idCat'].'">'.$donnees['titre'].'</option>';
+}
+?>
+            </select>
 		  </div>
 
 		  <div class="form-group">
