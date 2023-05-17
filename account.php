@@ -33,7 +33,7 @@ $_SESSION["ok"] = "";
         </form>
         <div class='disco_div'>
             <h2>Se déconnecter</h2>
-            <a class='form_button_link' href='disconnect.php'>Déconnection</a>
+            <a class='form_button_link' href='disconnect.php'>Déconnexion</a>
         </div>
         <form class="log_reg_form" action="delete_account.php" method="POST">
             <h2>Supprimer votre compte</h2>
