@@ -22,7 +22,7 @@ $reponse = $req->execute();
 while ($donnees=$reponse->fetchArray())
 {
     echo '<div class="ranger" style="line-height: 22px;">';
-    echo '<div align="center"><img class="prod_img" src="data:image/jpeg;base64,'.$donnees['b64img'].'" width="200" height="200" ></div><br>';
+    echo '<div align="center"><img class="prod_img" src="data:'.$donnees['mime'].';base64,'.$donnees['b64img'].'" width="200" height="200" ></div><br>';
     echo '<div class="under-img"><b>'.$donnees['nom'].'</b><br>';
     $stock = $donnees['quantite'] !== 0 ? '<i style="color:green">En stock</i>' : '<i style="color:red">Rupture</i>';
     echo $stock.'</span><br>';

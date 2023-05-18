@@ -69,7 +69,7 @@ while ($donnees=$reponse->fetchArray()) {
     $price = $infos['prix']*$donnees['quantite'];
     echo '<tr>';
     echo '<td width="50%">';
-    echo '<img class="tab-img valign" src="data:image/jpeg;base64,'.$infos['b64img'].'"/>';
+    echo '<img class="tab-img valign" src="data:'.$infos['mime'].';base64,'.$infos['b64img'].'"/>';
     echo '<span class="valign">'.$infos['nom'].'</span>';
     echo '</td>';
     echo '<td class="text-center">'.$donnees['quantite'].'</td>';

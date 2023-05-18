@@ -39,7 +39,6 @@ if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['art
             $req->bindValue(':b64img', $b64img);
             $req->bindValue(':idCat', $_POST['article-cat']);
             $req->bindValue(':mime', $mime);
-            $req->bindValue(':id', $_GET['id']);
     } else {
         $_SESSION['error'] = 'Erreur dans le formulaire.';
         header('location: admin.php');
@@ -48,6 +47,40 @@ if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['art
     $_SESSION['error'] = $db->lastErrorMsg();
     $db->close();
     header('location: admin.php');
+} else if (isset($_POST['mod']) AND isset($_SESSION['droits']) AND isset($_POST['cat-name'])) {
+    $db = new MyDB();
+    if ($_POST['mod'] === '1' AND isset($_GET['id'])) {
+        if ($_FILES['cat-image']['tmp_name'] AND getimagesize($_FILES['cat-image']['tmp_name'])) {
+            $mime = mime_content_type($_FILES['cat-image']['tmp_name']);
+            $b64img = base64_encode(file_get_contents($_FILES['cat-image']['tmp_name']));
+            $req = $db->prepare("UPDATE Categories SET titre=:titre, b64img=:b64img, mime=:mime WHERE idCat=:id;");
+            $req->bindValue(':titre', $_POST['cat-name']);
+            $req->bindValue(':b64img', $b64img);
+            $req->bindValue(':mime', $mime);
+        } else {
+            $req = $db->prepare("UPDATE Categories SET titre=:titre WHERE idCat=:id;");
+            $req->bindValue(':titre', $_POST['cat-name']);
+            $req->bindValue(':id', $_GET['id']);
+        }
+    } else if ($_POST['mod'] === '2' AND isset($_GET['id'])) {
+        $req = $db->prepare("DELETE FROM Categories WHERE idCat=:id;");
+        $req->bindValue(':id', $_GET['id']);
+    } else if ($_POST['mod'] === '3' AND $_FILES['cat-image']['tmp_name'] AND getimagesize($_FILES['cat-image']['tmp_name'])) {
+            $mime = mime_content_type($_FILES['cat-image']['tmp_name']);
+            $b64img = base64_encode(file_get_contents($_FILES['article-image']['tmp_name']));
+            $req = $db->prepare("INSERT INTO Articles (titre, b64img, mime) VALUES (:titre, :b64img, :mime);");
+            $req->bindValue(':titre', $_POST['cat-name']);
+            $req->bindValue(':b64img', $b64img);
+            $req->bindValue(':mime', $mime);
+
+    } else {
+        $_SESSION['error'] = 'Erreur dans le formulaire.';
+        header('location: admin.php');
+    }
+    $req->execute();
+    $db->close();
+    header('location: admin.php');
+
 } else {
     header('location: index.php');
 }

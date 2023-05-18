@@ -33,7 +33,7 @@ while ($donnees=$categories->fetchArray()) {
     echo '<tr>';
     echo '<td>'.$donnees['titre'].'</td>';
     echo '<td>';
-    echo '<a class="admin_link" href="edit_cat.php?cat='.$donnees['idCat'].'">';
+    echo '<a class="admin_link" href="edit_cat.php?id='.$donnees['idCat'].'">';
     echo '<span class="edit_text">Editer</span>';
     echo '<span class="material-icons" style="display: inline-block; vertical-align: middle;">edit</span>';
     echo '</a>';
@@ -43,7 +43,7 @@ while ($donnees=$categories->fetchArray()) {
 ?>
 			</tbody>
 		</table>
-        <a class="admin_link edit_text" href="add_cat.php">Ajouter une catégorie</a>
+        <a class="admin_link edit_text" href="edit_cat.php">Ajouter une catégorie</a>
 		<h2>Editer un Article</h2>
 		<table>
 			<thead>
