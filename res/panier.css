@@ -51,7 +51,7 @@ td {
 
 .trash-link:hover {
     transition: 0.2s;
-    color: #313131;
+    color: darkgray;
 }
 
 .tab-img {
@@ -71,3 +71,14 @@ td {
     text-align: center;
 }
 
+.plus_moins {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.plus_moins:hover {
+    transition: 0.2s;
+    color: darkgray;
+}

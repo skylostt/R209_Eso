@@ -72,9 +72,9 @@ while ($donnees=$reponse->fetchArray()) {
     echo '<img class="tab-img valign" src="data:'.$infos['mime'].';base64,'.$infos['b64img'].'"/>';
     echo '<span class="valign">'.$infos['nom'].'</span>';
     echo '</td>';
-    echo '<td class="text-center"><a href="add_to_cart.php?prod='.$infos['idProd'].'&qte=1&from=panier.php">+ </a>';
+    echo '<td class="text-center"><a class="plus_moins" href="add_to_cart.php?prod='.$infos['idProd'].'&qte=1&from=panier.php">+ </a>';
     echo $donnees['quantite'];
-    echo '<a href="add_to_cart.php?prod='.$infos['idProd'].'&qte=-1&from=panier.php"> -</a>';
+    echo '<a class="plus_moins" href="add_to_cart.php?prod='.$infos['idProd'].'&qte=-1&from=panier.php"> -</a>';
     echo '</td>';
     echo '<td class="text-center">'.$price.'€ ('.$infos['prix'].'€/u)</td>';
     echo '<td class="text-center"><a href="del_from_cart.php?id='.$donnees['idProd'].'" class="trash-link"><span class="material-icons">delete</span></a></td>';
