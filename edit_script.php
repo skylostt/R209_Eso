@@ -67,8 +67,8 @@ if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['art
         $req->bindValue(':id', $_GET['id']);
     } else if ($_POST['mod'] === '3' AND $_FILES['cat-image']['tmp_name'] AND getimagesize($_FILES['cat-image']['tmp_name'])) {
             $mime = mime_content_type($_FILES['cat-image']['tmp_name']);
-            $b64img = base64_encode(file_get_contents($_FILES['article-image']['tmp_name']));
-            $req = $db->prepare("INSERT INTO Articles (titre, b64img, mime) VALUES (:titre, :b64img, :mime);");
+            $b64img = base64_encode(file_get_contents($_FILES['cat-image']['tmp_name']));
+            $req = $db->prepare("INSERT INTO Categories (titre, b64img, mime) VALUES (:titre, :b64img, :mime);");
             $req->bindValue(':titre', $_POST['cat-name']);
             $req->bindValue(':b64img', $b64img);
             $req->bindValue(':mime', $mime);
