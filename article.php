@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <?php include('db_class.php');
-if (! isset($_GET['id'])) {
+if (! isset($_GET['id']) OR ! is_numeric($_GET['id'])) {
     header('location: index.php');
 }
 $db = new MyDB();
