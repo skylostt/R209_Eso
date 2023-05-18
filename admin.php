@@ -2,7 +2,7 @@
 session_start();
 include('db_class.php');
 $db = new MyDB();
-if (! $_SESSION['droits']) {
+if (! $_SESSION['user']['droits']) {
     header('location: index.php');
 }
 ?>

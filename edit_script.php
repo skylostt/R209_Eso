@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('db_class.php');
-if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['article-desc']) AND isset($_POST['article-price']) AND isset($_POST['stock-name']) AND $_SESSION['droits'] AND isset($_POST['article-cat'])) {
+if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['article-desc']) AND isset($_POST['article-price']) AND isset($_POST['stock-name']) AND $_SESSION['user']['droits'] AND isset($_POST['article-cat'])) {
     $db = new MyDB();
     if ($_POST['mod'] === '1' AND isset($_GET['id'])) {
         if ($_FILES['article-image']['tmp_name'] AND getimagesize($_FILES['article-image']['tmp_name'])) {
@@ -47,7 +47,7 @@ if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['art
     $_SESSION['error'] = $db->lastErrorMsg();
     $db->close();
     header('location: admin.php');
-} else if (isset($_POST['mod']) AND isset($_SESSION['droits']) AND isset($_POST['cat-name'])) {
+} else if (isset($_POST['mod']) AND isset($_SESSION['user']['droits']) AND isset($_POST['cat-name'])) {
     $db = new MyDB();
     if ($_POST['mod'] === '1' AND isset($_GET['id'])) {
         if ($_FILES['cat-image']['tmp_name'] AND getimagesize($_FILES['cat-image']['tmp_name'])) {
