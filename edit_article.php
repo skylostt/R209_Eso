@@ -54,6 +54,7 @@ if (isset($_GET['id'])) {
 <?php
 $cat = $db->query('SELECT idCat, titre FROM Categories');
 while ($donnees=$cat->fetchArray()) {
+    // On ajoute l'attribut selected si le produit appartient à la catégorie parcourue
     $select = (isset($values) AND $values['idCat'] === $donnees['idCat']) ? 'selected' : '';
     echo '<option value="'.$donnees['idCat'].'" '.$select.'>'.$donnees['titre'].'</option>';
 }

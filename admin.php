@@ -28,6 +28,7 @@ include('nav.php');
 			</thead>
 			<tbody>
 <?php
+// On parcourt la liste des catégories
 $categories = $db->query("SELECT * FROM Categories;");
 while ($donnees=$categories->fetchArray()) {
     echo '<tr>';
@@ -57,6 +58,7 @@ while ($donnees=$categories->fetchArray()) {
 			</thead>
 			<tbody>
 <?php
+// On parcourt la liste des articles
 $articles = $db->query("SELECT * FROM Articles");
 while ($donnees=$articles->fetchArray()) {
     echo '<tr>';
@@ -79,6 +81,7 @@ while ($donnees=$articles->fetchArray()) {
 		<h2>Liste des utilisateurs</h2>
 		<ul>
 <?php
+// On parcourt la liste des utilisateurs
 $users = $db->query("SELECT * FROM Utilisateurs");
 while ($donnees=$users->fetchArray()) {
     echo '<li>';

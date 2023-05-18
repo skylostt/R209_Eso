@@ -5,6 +5,7 @@ if (! isset($_GET['id'])) {
     header('location: index.php');
 }
 $db = new MyDB();
+// On récupère les infos sur l'article à afficher
 $req = "SELECT * FROM Articles WHERE idProd='".$_GET['id']."'";
 $reponse = $db->query($req)->fetchArray();
 ?>
@@ -44,6 +45,7 @@ $_SESSION["ok"] = "";
 
                 <p>Prix : <strong><?php echo $reponse['prix']; ?>€</strong></p>
 <?php
+// Si l'article est disponible
 if ($reponse['quantite'] > 0) {
     echo '<form method="GET" action="add_to_cart.php">';
     echo '<label>Quantité</label>';

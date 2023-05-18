@@ -18,26 +18,32 @@ if (isset($_GET['prod']) AND isset($_GET['qte']) AND is_numeric($_GET['prod']) A
     }
     // On vérifie que le produit existe
     $prod_exist = ! empty($db->query("SELECT idProd FROM Articles WHERE idProd='".$_GET['prod']."'")->fetchArray());
+    // Si le produit existe, est disponible et n'est pas dans le panier
     if ($q_dispo >= $_GET['qte'] AND $is_not_in_cart AND $prod_exist) {
         if (isset($_SESSION['username'])) {
             $req_user_id = "SELECT idUser FROM Utilisateurs WHERE username='".$_SESSION['username']."'";
             $userid = $db->query($req_user_id)->fetchArray()['idUser'];
+            // On ajoute l'article au panier
             $req = "INSERT INTO Paniers (idSession, idProd, idUser, quantite) VALUES ('".$sid."', '".$_GET['prod']."', '".$userid."', '".$_GET['qte']."');";
             $db->query($req);
         } else {
+            // On ajoute l'article au panier
             $req = "INSERT INTO Paniers (idSession, idProd, quantite) VALUES ('".$sid."', '".$_GET['prod']."', '".$_GET['qte']."');";
             $db->query($req);
         }
         $req_change_qte = "UPDATE Articles SET quantite=".$q_dispo-$_GET['qte']." WHERE idProd='".$_GET['prod']."';";
         $db->query($req_change_qte);
         $_SESSION['ok'] = "L'article a bien été ajouté au panier.";
+    // Sinon si le produit existe et est disponible
     } else if ($q_dispo >= $_GET['qte'] AND $prod_exist) {
         if (isset($_SESSION['username'])) {
             $req_user_id = "SELECT idUser FROM Utilisateurs WHERE username='".$_SESSION['username']."'";
             $userid = $db->query($req_user_id)->fetchArray()['idUser'];
+            // On met à jour la quantité dans le panier
             $req = "UPDATE Paniers SET quantite=quantite+".$_GET['qte']." WHERE idProd='".$_GET['prod']."' AND idUser='".$userid."';";
             $db->query($req);
         } else {
+            // On met à jour la quantité dans le panier
             $req = "UPDATE Paniers SET quantite=quantite+".$_GET['prod']." WHERE idSession='".$sid."' AND idProd='".$_GET['prod']."';";
             $db->query($req);
         }
