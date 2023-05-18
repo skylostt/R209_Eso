@@ -10,9 +10,8 @@ if (isset($_POST['username']) AND isset($_POST['password']) AND ! isset($_SESSIO
     $entry = $req->execute()->fetchArray();
     if (! empty($entry))
     {
-        $_SESSION['username'] = $entry['username'];
+        $_SESSION['user'] = $entry;
         $_SESSION['message'] = "Vous avez bien été connecté";
-        $_SESSION['droits'] = $entry['droits'];
         header('Location: index.php');
     }
     else

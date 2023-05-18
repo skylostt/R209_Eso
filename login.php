@@ -2,7 +2,7 @@
 session_start();
 include("db_class.php");
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['user']['username'])) {
     header('location: account.php');
 }
 ?>

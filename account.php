@@ -12,7 +12,7 @@ include('db_class.php');
 <?php
 include('nav.php');
 ?>
-    <h1 align="center">Paramètres de <?php echo $_SESSION['username']; ?></h1>
+    <h1 align="center">Paramètres de <?php echo $_SESSION['user']['username']; ?></h1>
         <form class="log_reg_form" action="change_password.php" method="POST">
             <span class='erreur_span'>
 <?php

@@ -35,8 +35,8 @@ $_SESSION["ok"] = "";
     <span>
 <?php
 $db = new MyDB();
-if (isset($_SESSION['username'])) {
-    $req = "SELECT COUNT(*) FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['username']."';";
+if (isset($_SESSION['user']['username'])) {
+    $req = "SELECT COUNT(*) FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['user']['username']."';";
 } else {
     $req = "SELECT COUNT(*) FROM Paniers WHERE idSession='".$sid."';";
 }
@@ -56,8 +56,8 @@ echo " article(s) dans votre panier";
     </tr>
 <?php
 
-if (isset($_SESSION['username'])) {
-    $req = "SELECT * FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['username']."';";
+if (isset($_SESSION['user']['username'])) {
+    $req = "SELECT * FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['user']['username']."';";
     $reponse = $db->query($req);
 } else {
     $req = "SELECT * FROM Paniers WHERE idSession='".$sid."';";
@@ -86,8 +86,8 @@ while ($donnees=$reponse->fetchArray()) {
 <div class="info-text">
     <p>Total : <b>
 <?php
-if (isset($_SESSION['username'])) {
-    $req = "SELECT Paniers.quantite, prix FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser JOIN Articles ON Paniers.idProd = Articles.idProd WHERE username='".$_SESSION['username']."';";
+if (isset($_SESSION['user']['username'])) {
+    $req = "SELECT Paniers.quantite, prix FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser JOIN Articles ON Paniers.idProd = Articles.idProd WHERE username='".$_SESSION['user']['username']."';";
 } else {
     $req = "SELECT Paniers.quantite, prix FROM Paniers JOIN Articles ON Paniers.idProd = Articles.idProd WHERE idSession='".$sid."';";
 }
