@@ -17,33 +17,35 @@ if (! $_SESSION['droits']) {
 		<h1>Editer un Article</h1>
 <?php
 $db = new MyDB();
-$req = $db->prepare("SELECT * FROM Articles WHERE idProd=:id;");
-$req->bindValue(":id", $_GET['id']);
-$values = $req->execute()->fetchArray();
-if (empty($values)) {
-    $_SESSION['error'] = "Erreur, l'identifiant recherché n'existe pas.";
-    header("admin.php");
+if (isset($_GET['id'])) {
+    $req = $db->prepare("SELECT * FROM Articles WHERE idProd=:id;");
+    $req->bindValue(":id", $_GET['id']);
+    $values = $req->execute()->fetchArray();
+    if (empty($values)) {
+        $_SESSION['error'] = "Erreur, l'identifiant recherché n'existe pas.";
+        header("admin.php");
+    }
 }
 ?>
-    <form action="edit_script.php?id=<?php echo $_GET['id']; ?>" method="POST" enctype="multipart/form-data">
+    <form action="edit_script.php<?php echo isset($_GET['id']) ? "?id=".$_GET['id'] : ""; ?>" method="POST" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="article-name">Nom de l'article :</label>
-            <input  class="form_input" type="text" id="article-name" name="article-name" value="<?php echo $values['nom'];?>" required>
+            <input  class="form_input" type="text" id="article-name" name="article-name" value="<?php echo isset($values['nom']) ? $values['nom'] : '';?>" required>
 		  </div>
 
           <div class="form-group">
 			<label for="article-desc">Description de l'article :</label>
-			<textarea class="form_input" id="article-desc" name="article-desc" required><?php echo $values['description'];?></textarea>
+			<textarea class="form_input" id="article-desc" name="article-desc" required><?php echo isset($values['description']) ? $values['description'] : '';?></textarea>
 		  </div>
 
 		  <div class="form-group">
 			<label for="article-price">Prix de l'article :</label>
-			<input class="form_input" type="text" id="article-price" name="article-price" value="<?php echo $values['prix'];?>" required>
+			<input class="form_input" type="text" id="article-price" name="article-price" value="<?php echo isset($values['prix']) ? $values['prix'] : '';?>" required>
 		  </div>
 
           <div class="form-group">
 			<label for="stock-name">Stock :</label>
-			<input class="form_input" type="text" id="stock-name" name="stock-name" value="<?php echo $values['quantite'];?>" required>
+			<input class="form_input" type="text" id="stock-name" name="stock-name" value="<?php echo isset($values['quantite']) ? $values['quantite'] : '';?>" required>
 		  </div>
 
 		  <div class="form-group">
@@ -64,8 +66,14 @@ while ($donnees=$cat->fetchArray()) {
 		  </div>
 
 		  <div class="form-group">
-			<button class="form_button modify" type="submit" name="mod" value="1">Modifier</button>
-            <button class="form_button delete" type="submit" name="mod" value="2">Supprimer</button>
+<?php
+if (isset($_GET['id'])) {
+    echo '<button class="form_button modify" type="submit" name="mod" value="1">Modifier</button>';
+    echo '<button class="form_button delete" type="submit" name="mod" value="2">Supprimer</button>';
+} else {
+    echo '<button class="form_button modify" type="submit" name="mod" value="3">Ajouter</button>';
+}
+?>
 		  </div>
 
         </form>
