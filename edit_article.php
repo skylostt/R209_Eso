@@ -14,7 +14,7 @@ if (! $_SESSION['droits']) {
 	<link rel="stylesheet" type="text/css" href="res/font.css">
 <?php include('nav.php'); ?>
 	<div class="container">
-		<h1>Editer un Article</h1>
+        <h1><?php echo isset($_GET['id']) ? "Editer" : "Ajouter"; ?> un Article</h1>
 <?php
 $db = new MyDB();
 if (isset($_GET['id'])) {
@@ -54,7 +54,8 @@ if (isset($_GET['id'])) {
 <?php
 $cat = $db->query('SELECT idCat, titre FROM Categories');
 while ($donnees=$cat->fetchArray()) {
-    echo '<option value="'.$donnees['idCat'].'">'.$donnees['titre'].'</option>';
+    $select = (isset($values) AND $values['idCat'] === $donnees['idCat']) ? 'selected' : '';
+    echo '<option value="'.$donnees['idCat'].'" '.$select.'>'.$donnees['titre'].'</option>';
 }
 ?>
             </select>

@@ -75,7 +75,7 @@ while ($donnees=$articles->fetchArray()) {
 ?>
 			</tbody>
 		</table>
-        <a class="admin_link edit_text" href="add_article.php">Ajouter un article</a>
+        <a class="admin_link edit_text" href="edit_article.php">Ajouter un article</a>
 		<h2>Liste des utilisateurs</h2>
 		<ul>
 <?php
