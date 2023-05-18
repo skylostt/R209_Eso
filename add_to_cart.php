@@ -31,8 +31,18 @@ if (isset($_GET['prod']) AND isset($_GET['qte']) AND is_numeric($_GET['prod']) A
         $req_change_qte = "UPDATE Articles SET quantite=".$q_dispo-$_GET['qte']." WHERE idProd='".$_GET['prod']."';";
         $db->query($req_change_qte);
         $_SESSION['ok'] = "L'article a bien été ajouté au panier.";
+    } else if ($q_dispo >= $_GET['qte'] AND $prod_exist) {
+        if (isset($_SESSION['username'])) {
+            $req_user_id = "SELECT idUser FROM Utilisateurs WHERE username='".$_SESSION['username']."'";
+            $userid = $db->query($req_user_id)->fetchArray()['idUser'];
+            $req = "UPDATE Paniers SET quantite=quantite+".$_GET['qte']." WHERE idProd='".$_GET['prod']."' AND idUser='".$userid."';";
+            $db->query($req);
+        } else {
+            $req = "UPDATE Paniers SET quantite=quantite+".$_GET['prod']." WHERE idSession='".$sid."' AND idProd='".$_GET['prod']."';";
+            $db->query($req);
+        }
     } else {
-        $_SESSION['error'] = "Erreur, soit le stock est trop faible, soit l'article n'existe pas, ou soit cet article est déjà dans votre panier.";
+        $_SESSION['error'] = "Erreur, soit le stock est trop faible, soit l'article n'existe pas.";
     }
 } else {
     echo 'requête invalide...';

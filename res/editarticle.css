@@ -24,10 +24,12 @@ body {
 }
 
 .modify:hover {
-	background-color: #005ea8;
+    transition: 0.2s;
+	background-color: #000044;
 }
 
 .delete:hover {
+    transition: 0.2s;
 	background-color: #c20202;
 }
 
@@ -37,7 +39,8 @@ body {
 
 .delete
 {
-    background-color: red;
+    margin-left: 10px;
+    background-color: #d31313;
 }
 
 
