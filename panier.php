@@ -47,7 +47,7 @@ echo " article(s) dans votre panier";
     <a class="continue" href="index.php">Continuer mes achats</a>
 </div>
 <br>
-<table style="" class='cart-tab' width="50%">
+<table class='cart-tab' width="50%">
     <tr class='nom-colonnes'>
         <td>Articles</td>
         <td class="text-center">Quantité</td>

@@ -19,7 +19,7 @@ $reponse = $db->query($req)->fetchArray();
     <link rel="stylesheet" href="res/font.css">
 <?php include('nav.php'); ?>
 
-        <h1><?php echo 'Article ~ '.$reponse['nom']; ?></h1>
+        <h1 class="title"><?php echo 'Article ~ '.$reponse['nom']; ?></h1>
 
 <div align="center">
         <span class="erreur_span">
@@ -59,11 +59,38 @@ if ($reponse['quantite'] > 0) {
 ?>
             </div>
         </div>
-
+        <div class="commentaires">
+            <h1>Commentaires</h1>
+<?php
+$req = "SELECT * FROM Commentaires WHERE idProd='".$_GET['id']."';";
+$results = $db->query($req);
+while ($donnees=$results->fetchArray()) {
+    $username=$db->query("SELECT username FROM Utilisateurs WHERE idUser=".$donnees['idUser'].";")->fetchArray()['username'];
+    echo "<div>";
+    echo '<div class="user_com">'.$username.' : '.$donnees['eval'].'/5</div>';
+    echo '<div class="user_text">'.$donnees['texte'].'</div>';
+}
+?>
+        </div>
+<?php
+if (isset($_SESSION['user'])) {
+echo '<h1>Laisser un commentaire</h1>';
+echo '<form method="POST" action="post_com.php?id='.$_GET['id'].'">';
+echo '<label>Note</label><br>';
+echo '<select name="eval">';
+echo '<option value="0">0</option>';
+echo '<option value="1">1</option>';
+echo '<option value="2">2</option>';
+echo '<option value="3">3</option>';
+echo '<option value="4">4</option>';
+echo '<option value="5">5</option>';
+echo '</select><br>';
+echo '<label>Commentaire</label><br>';
+echo '<textarea name="comment"></textarea><br>';
+echo '<input type="submit" value="Publier">';
+echo '</form>';
+}
+?>
 <?php $db->close(); ?>
-	<div class='footer'>
-        Droit d'auteur © 2056 Nom du site. Tous droits réservés.
-	</div>
-
 </body>
 </html>

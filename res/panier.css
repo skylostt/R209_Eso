@@ -82,3 +82,17 @@ td {
     transition: 0.2s;
     color: darkgray;
 }
+
+.command_button {
+    margin-top: 15px;
+    padding: 5px;
+    background-color: darkblue;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.command_button:hover {
+    transition: 0.2s;
+    background-color: #000044;
+}

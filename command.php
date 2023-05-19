@@ -31,7 +31,40 @@ echo isset($_SESSION["ok"]) ? $_SESSION["ok"] : "";
 $_SESSION["ok"] = "";
 ?>
         </span>
-</div>
-</div>
+<table class='cart-tab' width="50%">
+    <tr class='nom-colonnes'>
+        <td class="text-center">Articles</td>
+        <td class="text-center">Quantité</td>
+        <td class="text-center">Prix</td>
+    </tr>
+<?php
+$db = new MyDB();
+if (isset($_SESSION['user']['username'])) {
+    $req = "SELECT * FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['user']['username']."';";
+    $reponse = $db->query($req);
+} else {
+    header('location: login.php');
+}
+while ($donnees=$reponse->fetchArray()) {
+    $infos_req = "SELECT * FROM Articles WHERE idProd='".$donnees['idProd']."';";
+    $infos = $db->query($infos_req)->fetchArray();
+    $price = $infos['prix']*$donnees['quantite'];
+    echo '<tr>';
+    echo '<td class="text-center">';
+    echo '<span class="valign">'.$infos['nom'].'</span>';
+    echo '</td>';
+    echo '<td class="text-center">';
+    echo $donnees['quantite'];
+    echo '</td>';
+    echo '<td class="text-center">'.$price.'€ ('.$infos['prix'].'€/u)</td>';
+    echo '</tr>';
+}
+?>
+</table>
+<h1 style="color: darkblue;">Adresse</h1>
+<form action="command_script.php" method="POST">
+    <input placeholder="Adresse" name="address" /><br>
+    <input type="submit" value="Commander" class="command_button" />
+</form>
 </body>
 </html>
