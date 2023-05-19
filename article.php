@@ -1,6 +1,8 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<?php include('db_class.php');
+<?php
+include('db_class.php');
+$_SESSION['activity'] = time();
 if (! isset($_GET['id']) OR ! is_numeric($_GET['id'])) {
     header('location: index.php');
 }

@@ -1,6 +1,10 @@
-<?php session_start(); ?>
+<?php
+session_start();
+include('db_class.php');
+$_SESSION['activity'] = time();
+
+?>
 <!DOCTYPE html>
-<?php include('db_class.php'); ?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">

@@ -2,6 +2,7 @@
 session_start();
 include('db_class.php');
 $sid = session_id();
+$_SESSION['activity'] = time();
 ?>
 <!DOCTYPE html>
 

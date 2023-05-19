@@ -1,6 +1,9 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<?php include('db_class.php'); ?>
+<?php
+include('db_class.php');
+$_SESSION['activity'] = time();
+?>
 <html lang="fr">
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

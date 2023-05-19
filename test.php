@@ -1,10 +1,16 @@
 <?php
-session_start();
 include('db_class.php');
-$sid = session_id();
 $db = new MyDB();
 
-if (is_numeric("8a")) {
-    echo "ok";
+$req = $db->query("SELECT idSession FROM Paniers WHERE idUser IS NULL;");
+
+while ($donnees=$req->fetchArray()) {
+    $sid=$donnees['idSession'];
+    echo "<br>";
+    session_id($sid);
+    session_start();
+    echo "session : ";
+    echo session_abort();
 }
+
 ?>
