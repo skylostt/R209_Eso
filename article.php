@@ -67,11 +67,14 @@ $results = $db->query($req);
 while ($donnees=$results->fetchArray()) {
     $username=$db->query("SELECT username FROM Utilisateurs WHERE idUser=".$donnees['idUser'].";")->fetchArray()['username'];
     echo "<div>";
-    echo '<div class="user_com">'.$username.' : '.$donnees['eval'].'/5</div>';
+    echo '<div style="display: flex;">';
+    echo '<span class="user_com" style="vertical-align: middle;">'.$username.' : '.$donnees['eval'].'/5</span>';
+    echo '<a href="del_com.php?idCom='.$donnees['idCom'].'&idProd='.$donnees['idProd'].'" class="suppr-link">X</a>';
+    echo '</div>';
     echo '<div class="user_text">'.$donnees['texte'].'</div>';
+    echo '</div>';
 }
 ?>
-        </div>
 <?php
 if (isset($_SESSION['user'])) {
 echo '<h1>Laisser un commentaire</h1>';

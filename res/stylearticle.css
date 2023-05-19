@@ -72,10 +72,23 @@ body {
 .user_com {
     margin-bottom: 5px;
     font-weight: bold;
+    vertical-align: middle;
 }
 
 .user_text {
     margin-left: 15px;
     margin-bottom: 10px;
     margin-right: 50%;
+}
+
+.suppr-link {
+    margin-left: 10px;
+    color: red;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.suppr-link:hover {
+    transition: 1.2s;
+    color: darkred;
 }
