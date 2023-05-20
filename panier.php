@@ -58,26 +58,24 @@ echo " article(s) dans votre panier";
 <?php
 
 if (isset($_SESSION['user']['username'])) {
-    $req = "SELECT * FROM Paniers WHERE idUser='".$_SESSION['user']['idUser']."';";
+    $req = "SELECT * FROM Paniers JOIN Articles ON Articles.idProd=Paniers.idProd WHERE idUser='".$_SESSION['user']['idUser']."';";
     $reponse = $db->query($req);
 } else {
-    $req = "SELECT * FROM Paniers WHERE idSession='".$sid."' AND idUser IS NULL;";
+    $req = "SELECT * FROM Paniers JOIN Articles ON Articles.idProd=Paniers.idProd WHERE idSession='".$sid."' AND idUser IS NULL;";
     $reponse = $db->query($req);
 }
 while ($donnees=$reponse->fetchArray()) {
-    $infos_req = "SELECT * FROM Articles WHERE idProd='".$donnees['idProd']."';";
-    $infos = $db->query($infos_req)->fetchArray();
-    $price = $infos['prix']*$donnees['quantite'];
+    $price = $donnees['prix']*$donnees['quantite'];
     echo '<tr>';
     echo '<td width="50%">';
-    echo '<img class="tab-img valign" src="data:'.$infos['mime'].';base64,'.$infos['b64img'].'"/>';
-    echo '<span class="valign">'.$infos['nom'].'</span>';
+    echo '<img class="tab-img valign" src="data:'.$donnees['mime'].';base64,'.$donnees['b64img'].'"/>';
+    echo '<span class="valign">'.$donnees['nom'].'</span>';
     echo '</td>';
-    echo '<td class="text-center"><a class="plus_moins" href="add_to_cart.php?prod='.$infos['idProd'].'&qte=1">+ </a>';
+    echo '<td class="text-center"><a class="plus_moins" href="add_to_cart.php?prod='.$donnees['idProd'].'&qte=1">+ </a>';
     echo $donnees['quantite'];
-    echo '<a class="plus_moins" href="add_to_cart.php?prod='.$infos['idProd'].'&qte=-1&from=panier.php"> -</a>';
+    echo '<a class="plus_moins" href="add_to_cart.php?prod='.$donnees['idProd'].'&qte=-1&from=panier.php"> -</a>';
     echo '</td>';
-    echo '<td class="text-center">'.$price.'€ ('.$infos['prix'].'€/u)</td>';
+    echo '<td class="text-center">'.$price.'€ ('.$donnees['prix'].'€/u)</td>';
     echo '<td class="text-center"><a href="del_from_cart.php?id='.$donnees['idProd'].'" class="trash-link"><span class="material-icons">delete</span></a></td>';
     echo '</tr>';
 }
