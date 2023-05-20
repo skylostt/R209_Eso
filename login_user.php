@@ -3,6 +3,7 @@ session_start();
 include('db_class.php');
 if (isset($_POST['username']) AND isset($_POST['password']) AND ! isset($_SESSION["username"]))
 {
+    $sid = session_id();
     $db = new MyDB();
     $req = $db->prepare("SELECT * FROM Utilisateurs WHERE username=:username AND password=:password;");
     $req->bindValue(':username', $_POST['username']);
@@ -12,6 +13,12 @@ if (isset($_POST['username']) AND isset($_POST['password']) AND ! isset($_SESSIO
     {
         $_SESSION['user'] = $entry;
         $_SESSION['message'] = "Vous avez bien été connecté";
+
+        $update_cart = $db->prepare("UPDATE Paniers SET idUser=:user WHERE idSession=:session");
+        $update_cart->bindValue(":user", $_SESSION['user']['idUser']);
+        $update_cart->bindValue(":session", $sid);
+        $update_cart->execute();
+
         header('Location: '.$_SESSION['last_page']);
     }
     else

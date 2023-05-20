@@ -38,9 +38,7 @@ if (isset($_GET['prod']) AND isset($_GET['qte']) AND is_numeric($_GET['prod']) A
             // On met à jour la quantité dans le panier
             $req = "UPDATE Paniers SET quantite=quantite+".$_GET['qte']." WHERE idSession='".$sid."' AND idProd='".$_GET['prod']."';";
         }
-        if ($_GET['qte'] > -1*$cur_qte AND $cur_qte+$_GET['qte'] <= $q_dispo) {
-            $db->query($req);
-        }
+        if ($_GET['qte'] > -1*$cur_qte AND $cur_qte+$_GET['qte'] <= $q_dispo) $db->query($req);
 
     } else {
         $_SESSION['error'] = "Erreur, soit le stock est trop faible, soit l'article n'existe pas.";
