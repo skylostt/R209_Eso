@@ -3,7 +3,7 @@ session_start();
 include("db_class.php");
 $sid = session_id();
 $_SESSION['activity'] = time();
-$_SESSION['last_page'] = 'panier.php';
+$_SESSION['last_page'] = 'command.php';
 
 ?>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ $_SESSION['last_page'] = 'panier.php';
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <?php include('nav.php'); ?>
-<h1 style="color:darkblue;" align="center">Votre Commande</h1>
+<h1 style="color:darkblue;" align="center">Vos commandes</h1>
 
 <div align="center">
         <span class="erreur_span" align="center">
@@ -42,10 +42,11 @@ $_SESSION["ok"] = "";
 <?php
 $db = new MyDB();
 if (isset($_SESSION['user']['username'])) {
-    $req = "SELECT * FROM Paniers JOIN Articles ON Articles.idProd=Paniers.idProd WHERE idUser='".$_SESSION['user']['idUser']."';";
+    $req = "SELECT * FROM Commandes  WHERE idUser='".$_SESSION['user']['idUser']."';";
     $reponse = $db->query($req);
 } else {
     header('location: login.php');
+    exit;
 }
 
 $somme = 0;
@@ -67,10 +68,5 @@ while ($donnees=$reponse->fetchArray()) {
 }
 ?>
 </table>
-<h1 style="color: darkblue;">Adresse</h1>
-<form action="command_script.php" method="POST">
-    <input placeholder="Adresse" name="address" /><br>
-    <input type="submit" value="Commander" class="command_button" />
-</form>
 </body>
 </html>

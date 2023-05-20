@@ -50,7 +50,19 @@ CREATE TABLE Commandes (
     idCom INTEGER PRIMARY KEY AUTOINCREMENT,
     idUser INTEGER NOT NULL,
     adresse TEXT NOT NULL,
+    etat TEXT NOT NULL,
     FOREIGN KEY (idUser) REFERENCES Utilisateurs (idUser)
+);
+
+DROP TABLE IF EXISTS ProdCommandes;
+
+CREATE TABLE ProdCommandes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    idCom INTEGER NOT NULL,
+    idProd INTEGER NOT NULL,
+    quantite INTEGER NOT NULL,
+    FOREIGN KEY (idProd) REFERENCES Articles (idProd),
+    FOREIGN KEY (idCom) REFERENCES Commandes (idCom)
 );
 
 DROP TABLE IF EXISTS Commentaires;
