@@ -3,6 +3,7 @@ session_start();
 include('db_class.php');
 if (! (isset($_SESSION['user']) AND isset($_POST['eval']) AND isset($_POST['comment']) AND is_numeric($_POST['eval']) AND isset($_GET['id']))) {
     header('location: index.php');
+    exit;
 }
 $db = new MyDB();
 

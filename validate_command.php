@@ -46,6 +46,7 @@ if (isset($_SESSION['user']['username'])) {
     $reponse = $db->query($req);
 } else {
     header('location: login.php');
+    exit;
 }
 
 $somme = 0;
@@ -63,10 +64,13 @@ while ($donnees=$reponse->fetchArray()) {
     echo $est_dispo === "dispo" ? $price.'€ ('.$donnees['prix'].'€/u)' : '-';
     echo '</td>';
     echo '</tr>';
-    $somme += $donnees['quantite']*$donnees['prix'];
+    if ($est_dispo === "dispo") $somme += $donnees['quantite']*$donnees['prix'];
 }
 ?>
 </table>
+<div class="info-text">
+Total : <b><?php echo $somme; ?>€</b>
+</div>
 <h1 style="color: darkblue;">Adresse</h1>
 <form action="command_script.php" method="POST">
     <input placeholder="Adresse" name="address" /><br>

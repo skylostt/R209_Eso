@@ -3,6 +3,7 @@ session_start();
 include('db_class.php');
 if (! $_SESSION['user']['droits']) {
     header('location: index.php');
+    exit;
 }
 ?>
 <!DOCTYPE html>

@@ -4,6 +4,7 @@ include("db_class.php");
 
 if (isset($_SESSION['user']['username'])) {
     header('location: account.php');
+    exit;
 }
 ?>
 <!DOCTYPE html>
