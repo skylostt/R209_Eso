@@ -13,7 +13,7 @@ while ($donnees=$req->fetchArray()) {
         $db->query("DELETE FROM Paniers WHERE idSession='".$sid."' AND idUser IS NULL;");
         echo "suppr : ";
         echo $sid;
-        echo "<br>";
+        echo "<br>\n";
         session_destroy();
     } else {
         session_write_close();

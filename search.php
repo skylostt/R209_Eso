@@ -3,6 +3,7 @@
 <?php
 include('db_class.php');
 $_SESSION['activity'] = time();
+$_SESSION['last_page'] = 'search.php';
 ?>
 <html lang="fr">
 <head>

@@ -49,14 +49,17 @@ while ($donnees=$reponse->fetchArray()) {
     $infos_req = "SELECT * FROM Articles WHERE idProd='".$donnees['idProd']."';";
     $infos = $db->query($infos_req)->fetchArray();
     $price = $infos['prix']*$donnees['quantite'];
+    $est_dispo = $infos['quantite'] >= $donnees['quantite'] ? 'dispo' : 'indispo';
     echo '<tr>';
     echo '<td class="text-center">';
-    echo '<span class="valign">'.$infos['nom'].'</span>';
+    echo '<span class="valign '.$est_dispo.'">'.$infos['nom'].'</span>';
     echo '</td>';
     echo '<td class="text-center">';
-    echo $donnees['quantite'];
+    echo $est_dispo === "dispo" ? $donnees['quantite'] : '-';
     echo '</td>';
-    echo '<td class="text-center">'.$price.'€ ('.$infos['prix'].'€/u)</td>';
+    echo '<td class="text-center">';
+    echo $est_dispo === "dispo" ? $price.'€ ('.$infos['prix'].'€/u)' : '-';
+    echo '</td>';
     echo '</tr>';
 }
 ?>

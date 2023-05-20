@@ -6,6 +6,7 @@ $_SESSION['activity'] = time();
 if (! isset($_GET['id']) OR ! is_numeric($_GET['id'])) {
     header('location: index.php');
 }
+$_SESSION['last_page'] = 'article.php?id='.$_GET['id'];
 $db = new MyDB();
 // On récupère les infos sur l'article à afficher
 $req = "SELECT * FROM Articles WHERE idProd='".$_GET['id']."'";

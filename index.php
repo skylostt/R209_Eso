@@ -2,6 +2,7 @@
 session_start();
 include('db_class.php');
 $_SESSION['activity'] = time();
+$_SESSION['last_page'] = 'index.php';
 
 ?>
 <!DOCTYPE html>

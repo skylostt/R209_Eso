@@ -3,6 +3,7 @@ session_start();
 include('db_class.php');
 $sid = session_id();
 $_SESSION['activity'] = time();
+$_SESSION['last_page'] = 'panier.php';
 ?>
 <!DOCTYPE html>
 
@@ -73,7 +74,7 @@ while ($donnees=$reponse->fetchArray()) {
     echo '<img class="tab-img valign" src="data:'.$infos['mime'].';base64,'.$infos['b64img'].'"/>';
     echo '<span class="valign">'.$infos['nom'].'</span>';
     echo '</td>';
-    echo '<td class="text-center"><a class="plus_moins" href="add_to_cart.php?prod='.$infos['idProd'].'&qte=1&from=panier.php">+ </a>';
+    echo '<td class="text-center"><a class="plus_moins" href="add_to_cart.php?prod='.$infos['idProd'].'&qte=1">+ </a>';
     echo $donnees['quantite'];
     echo '<a class="plus_moins" href="add_to_cart.php?prod='.$infos['idProd'].'&qte=-1&from=panier.php"> -</a>';
     echo '</td>';

@@ -96,3 +96,11 @@ td {
     transition: 0.2s;
     background-color: #000044;
 }
+
+.dispo {
+    color: green;
+}
+
+.indispo {
+    color: red;
+}
