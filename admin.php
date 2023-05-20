@@ -51,7 +51,7 @@ while ($donnees=$categories->fetchArray()) {
 				<tr>
 					<th>Article</th>
 					<th>Catégorie</th>
-					<th>Quantité</th>
+					<th>Stock</th>
 					<th>Prix</th>
 					<th>Action</th>
 				</tr>
@@ -64,7 +64,7 @@ while ($donnees=$articles->fetchArray()) {
     echo '<tr>';
     echo '<td>'.$donnees['nom'].'</td>';
     echo '<td>'.$donnees['idCat'].'</td>';
-    echo '<td>'.$donnees['quantite'].'</td>';
+    echo '<td>'.$donnees['stock'].'</td>';
     echo '<td>'.$donnees['prix'].'€</td>';
     echo '<td>';
     echo '<a class="admin_link" href="edit_article.php?id='.$donnees['idProd'].'">';

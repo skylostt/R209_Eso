@@ -7,7 +7,7 @@ $db = new MyDB();
 
 if (isset($_GET['prod']) AND isset($_GET['qte']) AND is_numeric($_GET['prod']) AND is_numeric(abs($_GET['qte']))) {
     // On compte le nomnbre d'articles en stock
-    $q_dispo = $db->query("SELECT quantite FROM Articles WHERE idProd='".$_GET['prod']."';")->fetchArray()['quantite'];
+    $q_dispo = $db->query("SELECT stock FROM Articles WHERE idProd='".$_GET['prod']."';")->fetchArray()['stock'];
     // On regarde si le produit à ajouter est déjà dans le panier
     $not_cart_req = isset($_SESSION['user']['username']) ?
         "SELECT idProd FROM Paniers WHERE idProd='".$_GET['prod']."' AND idUser='".$_SESSION['user']['idUser']."';" :

@@ -28,7 +28,7 @@ while ($donnees=$reponse->fetchArray())
     echo '<div class="ranger" style="line-height: 22px;">';
     echo '<div align="center"><img class="prod_img" src="data:'.$donnees['mime'].';base64,'.$donnees['b64img'].'" width="200" height="200" ></div><br>';
     echo '<div class="under-img"><b>'.$donnees['nom'].'</b><br>';
-    $stock = $donnees['quantite'] !== 0 ? '<i style="color:green">En stock</i>' : '<i style="color:red">Rupture</i>';
+    $stock = $donnees['stock'] !== 0 ? '<i style="color:green">En stock</i>' : '<i style="color:red">Rupture</i>';
     echo $stock.'</span><br>';
     echo '<b style="color:darkblue;">- '.$donnees['prix'].' € -</b><br>';
     echo '<a class="see-more" href="article.php?id='.$donnees['idProd'].'">Voir plus</a><br>';

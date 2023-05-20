@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
 
           <div class="form-group">
 			<label for="stock-name">Stock :</label>
-			<input class="form_input" type="text" id="stock-name" name="stock-name" value="<?php echo isset($values['quantite']) ? $values['quantite'] : '';?>" required>
+			<input class="form_input" type="text" id="stock-name" name="stock-name" value="<?php echo isset($values['stock']) ? $values['stock'] : '';?>" required>
 		  </div>
 
 		  <div class="form-group">

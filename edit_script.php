@@ -7,9 +7,9 @@ if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['art
         if ($_FILES['article-image']['tmp_name'] AND getimagesize($_FILES['article-image']['tmp_name'])) {
             $mime = mime_content_type($_FILES['article-image']['tmp_name']);
             $b64img = base64_encode(file_get_contents($_FILES['article-image']['tmp_name']));
-            $req = $db->prepare("UPDATE Articles SET nom=:nom, quantite=:quantite, prix=:prix, description=:description, b64img=:b64img, idCat=:idCat, mime=:mime WHERE idProd=:id;");
+            $req = $db->prepare("UPDATE Articles SET nom=:nom, stock=:stock, prix=:prix, description=:description, b64img=:b64img, idCat=:idCat, mime=:mime WHERE idProd=:id;");
             $req->bindValue(':nom', $_POST['article-name']);
-            $req->bindValue(':quantite', $_POST['stock-name']);
+            $req->bindValue(':stock', $_POST['stock-name']);
             $req->bindValue(':prix', $_POST['article-price']);
             $req->bindValue(':description', $_POST['article-desc']);
             $req->bindValue(':b64img', $b64img);
@@ -17,9 +17,9 @@ if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['art
             $req->bindValue(':mime', $mime);
             $req->bindValue(':id', $_GET['id']);
         } else {
-            $req = $db->prepare("UPDATE Articles SET nom=:nom, quantite=:quantite, prix=:prix, description=:description, idCat=:idCat WHERE idProd=:id;");
+            $req = $db->prepare("UPDATE Articles SET nom=:nom, stock=:stock, prix=:prix, description=:description, idCat=:idCat WHERE idProd=:id;");
             $req->bindValue(':nom', $_POST['article-name']);
-            $req->bindValue(':quantite', $_POST['stock-name']);
+            $req->bindValue(':stock', $_POST['stock-name']);
             $req->bindValue(':prix', $_POST['article-price']);
             $req->bindValue(':description', $_POST['article-desc']);
             $req->bindValue(':idCat', $_POST['article-cat']);
@@ -31,9 +31,9 @@ if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['art
     } elseif ($_POST['mod'] === '3' AND $_FILES['article-image']['tmp_name'] AND getimagesize($_FILES['article-image']['tmp_name'])) {
             $mime = mime_content_type($_FILES['article-image']['tmp_name']);
             $b64img = base64_encode(file_get_contents($_FILES['article-image']['tmp_name']));
-            $req = $db->prepare("INSERT INTO Articles (nom, quantite, prix, description, b64img, idCat, mime) VALUES (:nom, :quantite, :prix, :description, :b64img, :idCat, :mime);");
+            $req = $db->prepare("INSERT INTO Articles (nom, stock, prix, description, b64img, idCat, mime) VALUES (:nom, :stock, :prix, :description, :b64img, :idCat, :mime);");
             $req->bindValue(':nom', $_POST['article-name']);
-            $req->bindValue(':quantite', $_POST['stock-name']);
+            $req->bindValue(':stock', $_POST['stock-name']);
             $req->bindValue(':prix', $_POST['article-price']);
             $req->bindValue(':description', $_POST['article-desc']);
             $req->bindValue(':b64img', $b64img);

@@ -49,10 +49,10 @@ $_SESSION["ok"] = "";
                 <p>Prix : <strong><?php echo $reponse['prix']; ?>€</strong></p>
 <?php
 // Si l'article est disponible
-if ($reponse['quantite'] > 0) {
+if ($reponse['stock'] > 0) {
     echo '<form method="GET" action="add_to_cart.php">';
     echo '<label>Quantité</label>';
-    echo '<input type="number" name="qte" min="1" max="'.$reponse['quantite'].'" value="1" style="width: 40px;"><br>';
+    echo '<input type="number" name="qte" min="1" max="'.$reponse['stock'].'" value="1" style="width: 40px;"><br>';
     echo '<button type="submit" class="submit_article" value="'.$reponse['idProd'].'" name="prod">Ajouter au panier</button>';
     echo '</form>';
 } else {

@@ -13,9 +13,9 @@ if (! isset($_POST['address'])) {
 $panier = $db->query("SELECT * FROM Paniers WHERE idUser=".$_SESSION['user']['idUser']);
 
 while ($donnees=$panier->fetchArray()) {
-    $q_dispo = $db->query("SELECT quantite FROM Articles WHERE idProd='".$donnees['idProd']."';")->fetchArray()['quantite'];
+    $q_dispo = $db->query("SELECT stock FROM Articles WHERE idProd='".$donnees['idProd']."';")->fetchArray()['stock'];
     if ($q_dispo >= $donnees['quantite']) {
-        $req_change_qte = "UPDATE Articles SET quantite=".$q_dispo-$donnees['quantite']." WHERE idProd='".$donnees['idProd']."';";
+        $req_change_qte = "UPDATE Articles SET stock=".$q_dispo-$donnees['quantite']." WHERE idProd='".$donnees['idProd']."';";
         $db->query($req_change_qte);
 
         $insert_command = $db->prepare("INSERT INTO Commandes (idUser, adresse, idProd, quantite, etat) VALUES (:user, :addr, :prod, :qte, 'En préparation');");
