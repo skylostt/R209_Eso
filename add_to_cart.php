@@ -10,8 +10,8 @@ if (isset($_GET['prod']) AND isset($_GET['qte']) AND is_numeric($_GET['prod']) A
     $q_dispo = $db->query("SELECT quantite FROM Articles WHERE idProd='".$_GET['prod']."';")->fetchArray()['quantite'];
     // On regarde si le produit à ajouter est déjà dans le panier
     $not_cart_req = isset($_SESSION['user']['username']) ?
-        "SELECT idProd FROM Paniers WHERE idProd='".$_GET['prod']."' AND idUser='".$_SESSION['user']['idUser']."'" :
-        "SELECT idProd FROM Paniers WHERE idProd='".$_GET['prod']."' AND idSession='".$sid."'";
+        "SELECT idProd FROM Paniers WHERE idProd='".$_GET['prod']."' AND idUser='".$_SESSION['user']['idUser']."';" :
+        "SELECT idProd FROM Paniers WHERE idProd='".$_GET['prod']."' AND idSession='".$sid."' AND idUser IS NULL;";
     $is_not_in_cart = empty($db->query($not_cart_req)->fetchArray());
     // On vérifie que le produit existe
     $prod_exist = ! empty($db->query("SELECT idProd FROM Articles WHERE idProd='".$_GET['prod']."'")->fetchArray());
@@ -33,7 +33,7 @@ if (isset($_GET['prod']) AND isset($_GET['qte']) AND is_numeric($_GET['prod']) A
             // On met à jour la quantité dans le panier
             $req = "UPDATE Paniers SET quantite=quantite+".$_GET['qte']." WHERE idProd='".$_GET['prod']."' AND idUser='".$_SESSION['user']['idUser']."';";
         } else {
-            $cur_qte = $db->query("SELECT quantite FROM Paniers WHERE idProd=".$_GET['prod']." AND idSession='".$sid."';")->fetchArray()['quantite'];
+            $cur_qte = $db->query("SELECT quantite FROM Paniers WHERE idProd=".$_GET['prod']." AND idSession='".$sid."' AND idUser IS NULL;")->fetchArray()['quantite'];
             if ($cur_qte+$_GET['qte'] > $q_dispo) header('location: '.$_SESSION['last_page']);
             // On met à jour la quantité dans le panier
             $req = "UPDATE Paniers SET quantite=quantite+".$_GET['qte']." WHERE idSession='".$sid."' AND idProd='".$_GET['prod']."';";

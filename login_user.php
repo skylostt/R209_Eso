@@ -12,7 +12,7 @@ if (isset($_POST['username']) AND isset($_POST['password']) AND ! isset($_SESSIO
     {
         $_SESSION['user'] = $entry;
         $_SESSION['message'] = "Vous avez bien été connecté";
-        header('Location: index.php');
+        header('Location: '.$_SESSION['last_page']);
     }
     else
     {

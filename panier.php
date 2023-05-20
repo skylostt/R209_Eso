@@ -37,11 +37,10 @@ $_SESSION["ok"] = "";
     <span>
 <?php
 $db = new MyDB();
-if (isset($_SESSION['user']['username'])) {
-    $req = "SELECT COUNT(*) FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['user']['username']."';";
-} else {
-    $req = "SELECT COUNT(*) FROM Paniers WHERE idSession='".$sid."';";
-}
+$req = isset($_SESSION['user']['username'])
+    ? "SELECT COUNT(*) FROM Paniers WHERE idUser='".$_SESSION['user']['idUser']."';"
+    : "SELECT COUNT(*) FROM Paniers WHERE idSession='".$sid."' AND idUser IS NULL;";
+
 echo $db->query($req)->fetchArray()['COUNT(*)'];
 echo " article(s) dans votre panier";
 ?>
@@ -59,10 +58,10 @@ echo " article(s) dans votre panier";
 <?php
 
 if (isset($_SESSION['user']['username'])) {
-    $req = "SELECT * FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser WHERE username='".$_SESSION['user']['username']."';";
+    $req = "SELECT * FROM Paniers WHERE idUser='".$_SESSION['user']['idUser']."';";
     $reponse = $db->query($req);
 } else {
-    $req = "SELECT * FROM Paniers WHERE idSession='".$sid."';";
+    $req = "SELECT * FROM Paniers WHERE idSession='".$sid."' AND idUser IS NULL;";
     $reponse = $db->query($req);
 }
 while ($donnees=$reponse->fetchArray()) {
@@ -89,9 +88,9 @@ while ($donnees=$reponse->fetchArray()) {
     <p>Total : <b>
 <?php
 if (isset($_SESSION['user']['username'])) {
-    $req = "SELECT Paniers.quantite, prix FROM Paniers JOIN Utilisateurs ON Paniers.idUser = Utilisateurs.idUser JOIN Articles ON Paniers.idProd = Articles.idProd WHERE username='".$_SESSION['user']['username']."';";
+    $req = "SELECT Paniers.quantite, prix FROM Paniers JOIN Articles ON Paniers.idProd = Articles.idProd WHERE idUser='".$_SESSION['user']['idUser']."';";
 } else {
-    $req = "SELECT Paniers.quantite, prix FROM Paniers JOIN Articles ON Paniers.idProd = Articles.idProd WHERE idSession='".$sid."';";
+    $req = "SELECT Paniers.quantite, prix FROM Paniers JOIN Articles ON Paniers.idProd = Articles.idProd WHERE idSession='".$sid."' AND idUser IS NULL;";
 }
 $reponse = $db->query($req);
 $somme = 0;
@@ -101,7 +100,7 @@ while ($donnees=$reponse->fetchArray()) {
 echo $somme."€";
 ?>
 </b></p>
-    <a class="payment" href="command.php">Commander</a>
+    <a class="payment" href="validate_command.php">Commander</a>
 </div>
 </body>
 </html>

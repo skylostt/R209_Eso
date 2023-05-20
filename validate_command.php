@@ -2,6 +2,8 @@
 session_start();
 include("db_class.php");
 $sid = session_id();
+$_SESSION['activity'] = time();
+$_SESSION['last_page'] = 'panier.php';
 
 ?>
 <!DOCTYPE html>
