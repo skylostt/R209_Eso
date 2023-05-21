@@ -104,3 +104,29 @@ td {
 .indispo {
     color: red;
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.commande {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+}
+
+.command_list {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.command_price {
+    border-top: 1px solid black;
+    padding: 5px;
+}
+
+.command_num {
+    border-bottom: 1px solid black;
+    padding: 5px;
+}

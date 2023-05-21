@@ -10,7 +10,7 @@ if (! isset($_SESSION['user'])) {
 if (isset($_POST['address']) AND $_POST['address'] !== '') {
     $panier_vide = $db->query("SELECT * FROM Paniers WHERE idUser='".$_SESSION['user']['idUser']."';")->fetchArray();
     if (! empty($panier_vide)) {
-        $new_com = $db->prepare("INSERT INTO Commandes (idUser, adresse) VALUES (:user, :addr)");
+        $new_com = $db->prepare("INSERT INTO Commandes (idUser, adresse, etat, prix) VALUES (:user, :addr, 'En préparation', 0);");
         $new_com->bindValue(':user', $_SESSION['user']['idUser']);
         $new_com->bindValue(':addr', $_POST['address']);
         $new_com->execute();
@@ -21,10 +21,12 @@ if (isset($_POST['address']) AND $_POST['address'] !== '') {
         exit;
     }
     $panier = $db->query("SELECT * FROM Paniers WHERE idUser='".$_SESSION['user']['idUser']."';");
+    $prix = 0;
     while ($donnees=$panier->fetchArray()) {
-        $q_dispo = $db->query("SELECT stock FROM Articles WHERE idProd='".$donnees['idProd']."';")->fetchArray()['stock'];
-        if ($q_dispo >= $donnees['quantite']) {
-            $req_change_qte = "UPDATE Articles SET stock=".$q_dispo-$donnees['quantite']." WHERE idProd='".$donnees['idProd']."';";
+        $stock_prix = $db->query("SELECT stock, prix FROM Articles WHERE idProd='".$donnees['idProd']."';")->fetchArray();
+        if ($stock_prix['stock'] >= $donnees['quantite']) {
+            $prix += $donnees['quantite']*$stock_prix['prix'];
+            $req_change_qte = "UPDATE Articles SET stock=".$stock_prix['stock']-$donnees['quantite']." WHERE idProd='".$donnees['idProd']."';";
             $db->query($req_change_qte);
 
             $insert_command = $db->prepare("INSERT INTO ProdCommandes (idCom, idProd, quantite) VALUES (:com, :prod, :qte);");
@@ -39,10 +41,11 @@ if (isset($_POST['address']) AND $_POST['address'] !== '') {
             $del_command->execute();
         }
     }
+    $db->query("UPDATE Commandes SET prix=".$prix." WHERE idCom=".$com_id.";");
 } else {
     header('location: validate_command.php');
     exit;
 }
-//header('location: command.php');
+header('location: command.php');
 
 ?>

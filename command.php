@@ -4,6 +4,14 @@ include("db_class.php");
 $sid = session_id();
 $_SESSION['activity'] = time();
 $_SESSION['last_page'] = 'command.php';
+$db = new MyDB();
+if (isset($_SESSION['user']['username'])) {
+    $req = "SELECT * FROM Commandes WHERE idUser='".$_SESSION['user']['idUser']."';";
+    $reponse = $db->query($req);
+} else {
+    header('location: login.php');
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
@@ -33,40 +41,28 @@ echo isset($_SESSION["ok"]) ? $_SESSION["ok"] : "";
 $_SESSION["ok"] = "";
 ?>
         </span>
-<table class='cart-tab' width="50%">
-    <tr class='nom-colonnes'>
-        <td class="text-center">Articles</td>
-        <td class="text-center">Quantité</td>
-        <td class="text-center">Prix</td>
-    </tr>
-<?php
-$db = new MyDB();
-if (isset($_SESSION['user']['username'])) {
-    $req = "SELECT * FROM Commandes  WHERE idUser='".$_SESSION['user']['idUser']."';";
-    $reponse = $db->query($req);
-} else {
-    header('location: login.php');
-    exit;
-}
+    <div class="container">
 
+<?php
 $somme = 0;
 while ($donnees=$reponse->fetchArray()) {
-    $price = $donnees['prix']*$donnees['quantite'];
-    $est_dispo = $donnees['stock'] >= $donnees['quantite'] ? 'dispo' : 'indispo';
-    echo '<tr>';
-    echo '<td class="text-center">';
-    echo '<span class="valign '.$est_dispo.'">'.$donnees['nom'].'</span>';
-    echo '</td>';
-    echo '<td class="text-center">';
-    echo $est_dispo === "dispo" ? $donnees['quantite'] : '-';
-    echo '</td>';
-    echo '<td class="text-center">';
-    echo $est_dispo === "dispo" ? $price.'€ ('.$donnees['prix'].'€/u)' : '-';
-    echo '</td>';
-    echo '</tr>';
-    $somme += $donnees['quantite']*$donnees['prix'];
+    echo '<div class="commande">';
+    echo '<div class="command_num">Commande n°'.$donnees['idCom'].' : En préparation</div>';
+    echo '<div>';
+    echo '<ul class="command_list">';
+    $command_items = $db->query("SELECT * FROM ProdCommandes JOIN Articles ON ProdCommandes.idProd=Articles.idProd WHERE idCom=".$donnees['idCom'].";");
+    while ($items=$command_items->fetchArray()) {
+        echo '<li class="command_item">'.$items['quantite'].'x '.$items['nom'].'</li>';
+    }
+    echo '</ul>';
+    echo '</div>';
+    echo '<div class="command_price">'.$donnees['adresse'].'</div>';
+    echo '<div class="command_price">Prix total : '.$donnees['prix'].'€</div>';
+    echo '</div>';
 }
 ?>
-</table>
+
+</div>
+
 </body>
 </html>
