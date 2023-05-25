@@ -78,6 +78,37 @@ while ($donnees=$articles->fetchArray()) {
 			</tbody>
 		</table>
         <a class="admin_link edit_text" href="edit_article.php">Ajouter un article</a>
+		<h2>Agir sur une commande</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>N° Commande</th>
+					<th>Utilisateur</th>
+					<th>Prix</th>
+					<th>Editer</th>
+				</tr>
+			</thead>
+			<tbody>
+<?php
+
+// On parcourt la liste des commandes
+$commandes = $db->query("SELECT * FROM Commandes JOIN Utilisateurs ON Commandes.idUser=Utilisateurs.idUser;");
+while ($donnees=$commandes->fetchArray()) {
+    echo '<tr>';
+    echo '<td>'.$donnees['idCom'].'</td>';
+    echo '<td>'.$donnees['username'].'</td>';
+    echo '<td>'.$donnees['prix'].'</td>';
+    echo '<td>';
+    echo '<a class="admin_link" href="edit_commande.php?id='.$donnees['idCom'].'">';
+    echo '<span class="edit_text">Editer</span>';
+    echo '<span class="material-icons" style="display: inline-block; vertical-align: middle;">edit</span>';
+    echo '</a>';
+    echo '</td>';
+    echo '</tr>';
+}
+?>
+			</tbody>
+		</table>
 		<h2>Liste des utilisateurs</h2>
 		<ul>
 <?php
