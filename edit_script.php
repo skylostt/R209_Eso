@@ -44,7 +44,6 @@ if (isset($_POST['mod']) AND isset($_POST['article-name']) AND isset($_POST['art
         header('location: admin.php');
     }
     $req->execute();
-    $_SESSION['error'] = $db->lastErrorMsg();
     $db->close();
     header('location: admin.php');
 } else if (isset($_POST['mod']) AND isset($_SESSION['user']['droits']) AND isset($_POST['cat-name'])) {
