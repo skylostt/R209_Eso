@@ -47,7 +47,7 @@ $_SESSION["ok"] = "";
 $somme = 0;
 while ($donnees=$reponse->fetchArray()) {
     echo '<div class="commande">';
-    echo '<div class="command_num">Commande n°'.$donnees['idCom'].' : En préparation</div>';
+    echo '<div class="command_num">Commande n°'.$donnees['idCom'].' : '.$donnees['etat'].'</div>';
     echo '<div>';
     echo '<ul class="command_list">';
     $command_items = $db->query("SELECT * FROM ProdCommandes JOIN Articles ON ProdCommandes.idProd=Articles.idProd WHERE idCom=".$donnees['idCom'].";");
