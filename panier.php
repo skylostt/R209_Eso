@@ -37,6 +37,7 @@ $_SESSION["ok"] = "";
     <span>
 <?php
 $db = new MyDB();
+// On compte le nombre d'articles qu'il y a dans le panier
 $req = isset($_SESSION['user']['username'])
     ? "SELECT COUNT(*) FROM Paniers WHERE idUser='".$_SESSION['user']['idUser']."';"
     : "SELECT COUNT(*) FROM Paniers WHERE idSession='".$sid."' AND idUser IS NULL;";

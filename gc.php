@@ -1,6 +1,12 @@
+<!DOCTYPE html>
 <?php
 include('db_class.php');
 $db = new MyDB();
+
+if (! (isset($_GET['key']) AND $_GET['key'] === 'key')) {
+    echo "clef invalide";
+    exit;
+}
 
 $req = $db->query("SELECT DISTINCT idSession FROM Paniers WHERE idUser IS NULL;");
 $time = time();

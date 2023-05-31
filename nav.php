@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="res/nav.css">
 </head>
@@ -15,9 +14,11 @@
 $db_nav = new MyDB();
 $req_nav = 'SELECT * FROM Categories';
 $reponse_nav = $db_nav->query($req_nav);
+// On parcourt les catégories pour le menu déroulant
 while ($donnees=$reponse_nav->fetchArray())
 {
     $select = '';
+    // Si la catégorie parcourue est celle du GET, alors on ajoute l'attribut selected à la balise option
     if (isset($_GET['cat'])) {
         if ($_GET['cat'] === strval($donnees['idCat'])) {
             $select = 'selected';
@@ -46,6 +47,7 @@ $req_nav = 'SELECT * FROM Categories';
 $reponse_nav = $db_nav->query($req_nav);
 while ($donnees=$reponse_nav->fetchArray())
 {
+    // On forge à la main le lien vers la catégorie (plus simple qu'un forumlaire...)
     echo '<a href="search.php?cat='.$donnees['idCat'].'" class="item_cat_bar">'.$donnees['titre'].'</a>';
 }
 

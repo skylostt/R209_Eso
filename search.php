@@ -14,7 +14,6 @@ $_SESSION['last_page'] = 'search.php';
     <meta charset="UTF-8">
     <title>Recherche</title>
 <?php include('nav.php'); ?>
-<body>
 <h1>Résultats</h1>
 <div class="container">
 <?php
