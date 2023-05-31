@@ -8,7 +8,9 @@ if (isset($_SESSION['user']['username']) AND isset($_POST['password'])) {
     $pass_req->bindValue(':username', $_SESSION['user']['username']);
     $pass_req->bindValue(':pass_hash', $pass_hash);
     $pass = $pass_req->execute()->fetchArray();
+    // Si le mot de passe du formulaire correspond avec le mot de passe de la bdd
     if (! empty($pass)) {
+        // Supprimer l'utilisateur
         $del_req = $db->prepare("DELETE FROM Utilisateurs WHERE username=:username AND password=:hash;");
         $del_req->bindValue(":username", $_SESSION['user']['username']);
         $del_req->bindValue(":hash", $pass_hash);

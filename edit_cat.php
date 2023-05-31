@@ -15,7 +15,7 @@ if (! $_SESSION['user']['droits']) {
 	<link rel="stylesheet" type="text/css" href="res/font.css">
 <?php include('nav.php'); ?>
 	<div class="container">
-        <h1><?php echo isset($_GET['id']) ? "Editer" : "Ajouter"; ?> une Catégorie</h1>
+        <h1><?php echo isset($_GET['id']) ? "Editer" : "Ajouter"; /* Si l'id de la catégorie a été précisé afficher éditer, ajouter sinon. */ ?> une Catégorie</h1>
 <?php
 $db = new MyDB();
 if (isset($_GET['id'])) {
@@ -41,10 +41,12 @@ if (isset($_GET['id'])) {
 
 		  <div class="form-group">
 <?php
+// Si l'id de l'article est défini afficher des boutons pour éditer ou supprimer cet article
 if (isset($_GET['id'])) {
     echo '<button class="form_button modify" type="submit" name="mod" value="1">Modifier</button>';
     echo '<button class="form_button delete" type="submit" name="mod" value="2">Supprimer</button>';
 } else {
+// Sinon, afficher un bouton pour ajouter l'article
     echo '<button class="form_button modify" type="submit" name="mod" value="3">Ajouter</button>';
 }
 ?>

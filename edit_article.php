@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('db_class.php');
+// Si l'utilisateur n'a pas les droits, quitter
 if (! $_SESSION['user']['droits']) {
     header('location: index.php');
     exit;
@@ -18,6 +19,7 @@ if (! $_SESSION['user']['droits']) {
         <h1><?php echo isset($_GET['id']) ? "Editer" : "Ajouter"; ?> un Article</h1>
 <?php
 $db = new MyDB();
+// Si un identifiant a été renseigné dans le GET, parcourir les articles
 if (isset($_GET['id'])) {
     $req = $db->prepare("SELECT * FROM Articles WHERE idProd=:id;");
     $req->bindValue(":id", $_GET['id']);
@@ -54,6 +56,7 @@ if (isset($_GET['id'])) {
             <select name="article-cat" required>
 <?php
 $cat = $db->query('SELECT idCat, titre FROM Categories');
+// On parcourt les catégories
 while ($donnees=$cat->fetchArray()) {
     // On ajoute l'attribut selected si le produit appartient à la catégorie parcourue
     $select = (isset($values) AND $values['idCat'] === $donnees['idCat']) ? 'selected' : '';

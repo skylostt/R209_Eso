@@ -4,6 +4,7 @@ include('db_class.php');
 $db = new MyDB();
 if (! $_SESSION['user']['droits']) {
     header('location: index.php');
+    exit;
 }
 ?>
 <!DOCTYPE html>

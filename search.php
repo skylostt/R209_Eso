@@ -16,6 +16,7 @@ $_SESSION['last_page'] = 'search.php';
 <?php include('nav.php'); ?>
 <body>
 <h1>Résultats</h1>
+<div class="container">
 <?php
 $db = new MyDB();
 $query = isset($_GET['query']) ? $_GET['query'] : '';
@@ -25,18 +26,20 @@ $req->bindValue(':cat', $_GET['cat']);
 $reponse = $req->execute();
 while ($donnees=$reponse->fetchArray())
 {
-    echo '<div class="ranger" style="line-height: 22px;">';
-    echo '<div align="center"><img class="prod_img" src="data:'.$donnees['mime'].';base64,'.$donnees['b64img'].'" width="200" height="200" ></div><br>';
-    echo '<div class="under-img"><b>'.$donnees['nom'].'</b><br>';
+    echo '<div class="ranger">';
+    echo '<div align="center"><a href="article.php?id='.$donnees['idProd'].'"><img class="prod_img" src="data:'.$donnees['mime'].';base64,'.$donnees['b64img'].'" width="200" height="200" ></a></div><br>';
+    echo '<div class="under-img">';
+    echo '<div class="article-name"><b>'.$donnees['nom'].'</b></div>';
     $stock = $donnees['stock'] !== 0 ? '<i style="color:green">En stock</i>' : '<i style="color:red">Rupture</i>';
     echo $stock.'</span><br>';
     echo '<b style="color:darkblue;">- '.$donnees['prix'].' € -</b><br>';
-    echo '<a class="see-more" href="article.php?id='.$donnees['idProd'].'">Voir plus</a><br>';
+    echo '<a class="see-more" href="article.php?id='.$donnees['idProd'].'">Plus d\'info.</a><br>';
     echo '<br>';
-    echo '<a class="button">Acheter</a><br></div>';
+    echo '<br></div>';
     echo '</div>';
 }
 $db->close();
 ?>
+</div>
 </body>
 </html>

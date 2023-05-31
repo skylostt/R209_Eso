@@ -31,12 +31,14 @@ if (isset($_SESSION['user']['username'])) {
 <div align="center">
         <span class="erreur_span" align="center">
 <?php
+// Si la variable d'erreur est définie afficher le message
 echo isset($_SESSION["error"]) ? $_SESSION["error"] : "";
 $_SESSION["error"] = "";
 ?>
         </span>
         <span class="ok_span" align="center">
 <?php
+// Si la variable de succès est définie afficher le message
 echo isset($_SESSION["ok"]) ? $_SESSION["ok"] : "";
 $_SESSION["ok"] = "";
 ?>
@@ -44,7 +46,7 @@ $_SESSION["ok"] = "";
     <div class="container">
 
 <?php
-$somme = 0;
+// On parcourt les commandes de l'utilisateur
 while ($donnees=$reponse->fetchArray()) {
     echo '<div class="commande">';
     echo '<div class="command_num">Commande n°'.$donnees['idCom'].' : '.$donnees['etat'].'</div>';

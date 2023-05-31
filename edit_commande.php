@@ -32,6 +32,7 @@ if (isset($_GET['id'])) {
 		<h3>Articles commandés</h3>
         <ul>
 <?php
+// On affiche le contenu de la commande avec le nom des articles
 $articles = $db->prepare("SELECT * FROM ProdCommandes JOIN Articles ON Articles.idProd=ProdCommandes.idProd WHERE idCom=:id;");
 $articles->bindValue(':id', $_GET['id']);
 $values = $articles->execute();
@@ -42,7 +43,7 @@ while ($donnees=$values->fetchArray()) {
         </ul>
 	</div>
 		<h3>Etat de la commande</h3>
-    <form action="change_state.php<?php echo isset($_GET['id']) ? "?id=".$_GET['id'] : ""; ?>" method="POST">
+    <form action="change_state.php<?php echo isset($_GET['id']) ? "?id=".$_GET['id'] : ""; /* On insère idProd dans la requête vers le script change_state.php */ ?>" method="POST">
     <select name="state">
     <option <?php echo $state === "En préparation" ? "selected=true" : "" ?>>En préparation</option>
         <option <?php echo $state === "En expédition" ? "selected=true" : "" ?>>En expédition</option>

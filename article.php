@@ -5,6 +5,7 @@ include('db_class.php');
 $_SESSION['activity'] = time();
 if (! isset($_GET['id']) OR ! is_numeric($_GET['id'])) {
     header('location: index.php');
+    exit;
 }
 $_SESSION['last_page'] = 'article.php?id='.$_GET['id'];
 $db = new MyDB();
@@ -27,12 +28,14 @@ $reponse = $db->query($req)->fetchArray();
 <div align="center">
         <span class="erreur_span">
 <?php
+// Si la variable d'erreur est définie afficher le message
 echo isset($_SESSION["error"]) ? $_SESSION["error"] : "";
 $_SESSION["error"] = "";
 ?>
         </span>
         <span class="ok_span">
 <?php
+// Si la variable de succès est définie afficher le message
 echo isset($_SESSION["ok"]) ? $_SESSION["ok"] : "";
 $_SESSION["ok"] = "";
 ?>
@@ -48,7 +51,7 @@ $_SESSION["ok"] = "";
 
                 <p>Prix : <strong><?php echo $reponse['prix']; ?>€</strong></p>
 <?php
-// Si l'article est disponible
+// Si l'article est disponible, on affiche le formulaire pour l'ajouter au panier
 if ($reponse['stock'] > 0) {
     echo '<form method="GET" action="add_to_cart.php">';
     echo '<label>Quantité</label>';
@@ -65,6 +68,7 @@ if ($reponse['stock'] > 0) {
         <div class="commentaires">
             <h1>Commentaires</h1>
 <?php
+// On parcourt les commentaires pour l'idProd actuel
 $req = "SELECT * FROM Commentaires WHERE idProd='".$_GET['id']."';";
 $results = $db->query($req);
 while ($donnees=$results->fetchArray()) {
@@ -79,6 +83,7 @@ while ($donnees=$results->fetchArray()) {
 }
 ?>
 <?php
+// Si l'utilisateur est connecté, on affiche le formulaire pour poster un commentaire
 if (isset($_SESSION['user'])) {
 echo '<h1>Laisser un commentaire</h1>';
 echo '<form method="POST" action="post_com.php?id='.$_GET['id'].'">';

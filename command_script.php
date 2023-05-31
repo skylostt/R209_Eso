@@ -7,8 +7,10 @@ if (! isset($_SESSION['user'])) {
     exit;
 }
 
+// Si le champ adresse a été rempli
 if (isset($_POST['address']) AND $_POST['address'] !== '') {
     $panier_vide = $db->query("SELECT * FROM Paniers WHERE idUser='".$_SESSION['user']['idUser']."';")->fetchArray();
+    // Si le panier n'est pas vide
     if (! empty($panier_vide)) {
         $new_com = $db->prepare("INSERT INTO Commandes (idUser, adresse, etat, prix) VALUES (:user, :addr, 'En préparation', 0);");
         $new_com->bindValue(':user', $_SESSION['user']['idUser']);
@@ -16,10 +18,12 @@ if (isset($_POST['address']) AND $_POST['address'] !== '') {
         $new_com->execute();
 
         $com_id = $db->query("SELECT MAX(idCom) FROM Commandes WHERE idUser='".$_SESSION['user']['idUser']."';")->fetchArray()['MAX(idCom)'];
+    // Sinon fin
     } else {
         header('location: panier.php');
         exit;
     }
+    // On parcourt les informations sur le panier et on calcule le prix total en temps réel
     $panier = $db->query("SELECT * FROM Paniers WHERE idUser='".$_SESSION['user']['idUser']."';");
     $prix = 0;
     while ($donnees=$panier->fetchArray()) {
@@ -41,6 +45,7 @@ if (isset($_POST['address']) AND $_POST['address'] !== '') {
             $del_command->execute();
         }
     }
+    // On ajoute le prix de la commande passée
     $db->query("UPDATE Commandes SET prix=".$prix." WHERE idCom=".$com_id.";");
 } else {
     header('location: validate_command.php');

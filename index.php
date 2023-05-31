@@ -24,10 +24,12 @@ include('nav.php');
 $db = new MyDB();
 $req = 'SELECT * FROM Categories';
 $reponse = $db->query($req);
+// On parcourt les catégories
 while ($donnees=$reponse->fetchArray())
 {
     echo '<div class="cat_content">';
     echo '<a href="search.php?cat='.$donnees['idCat'].'">';
+    // On affiche l'image en base64 avec le bon type mime
     echo '<img class="cat_img" src="data:'.$donnees['mime'].';base64,'.$donnees['b64img'].'" alt="">';
     echo '</a>';
     echo '<div class="bottom-left">'.$donnees['titre'].'</div>';

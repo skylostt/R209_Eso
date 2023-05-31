@@ -3,9 +3,9 @@ body {
 }
 
 .ranger {
-    display: inline-block;
     align-items: center;
     margin-left: 10px;
+    width: 200px;
 }
 
 .button {
@@ -20,6 +20,7 @@ body {
 
 .under-img {
     text-align: center;
+    height: 20%;
 }
 
 .see-more {
@@ -33,6 +34,8 @@ body {
 
 .prod_img {
     object-fit: cover;
+    height: 100px;
+    width: 100px;
 }
 
 .erreur_span {
@@ -41,4 +44,15 @@ body {
 
 .ok_span {
     color: green;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.article-name {
+    height: 75%;
+    overflow: hidden;
 }

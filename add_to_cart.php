@@ -34,7 +34,11 @@ if (isset($_GET['prod']) AND isset($_GET['qte']) AND is_numeric($_GET['prod']) A
             $req = "UPDATE Paniers SET quantite=quantite+".$_GET['qte']." WHERE idProd='".$_GET['prod']."' AND idUser='".$_SESSION['user']['idUser']."';";
         } else {
             $cur_qte = $db->query("SELECT quantite FROM Paniers WHERE idProd=".$_GET['prod']." AND idSession='".$sid."' AND idUser IS NULL;")->fetchArray()['quantite'];
-            if ($cur_qte+$_GET['qte'] > $q_dispo) header('location: '.$_SESSION['last_page']);
+            // Si la quantité commandée est trop importante, quitter le programme
+            if ($cur_qte+$_GET['qte'] > $q_dispo) {
+                header('location: '.$_SESSION['last_page']);
+                exit;
+            }
             // On met à jour la quantité dans le panier
             $req = "UPDATE Paniers SET quantite=quantite+".$_GET['qte']." WHERE idSession='".$sid."' AND idProd='".$_GET['prod']."';";
         }

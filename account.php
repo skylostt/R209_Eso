@@ -16,12 +16,14 @@ include('nav.php');
         <form class="log_reg_form" action="change_password.php" method="POST">
             <span class='erreur_span'>
 <?php
+// Si la variable d'erreur est définie afficher le message
 echo isset($_SESSION["error"]) ? $_SESSION["error"] : "";
 $_SESSION["error"] = "";
 ?>
             </span>
             <span class='ok_span'>
 <?php
+// Si la variable de succès est définie afficher le message
 echo isset($_SESSION["ok"]) ? $_SESSION["ok"] : "";
 $_SESSION["ok"] = "";
 ?>
@@ -35,6 +37,15 @@ $_SESSION["ok"] = "";
             <h2>Se déconnecter</h2>
             <a class='form_button_link' href='disconnect.php'>Déconnexion</a>
         </div>
+<?php
+// Si l'utilisateur est admin afficher un bouton d'accès à l'admin. page
+if ($_SESSION['user']['droits']) {
+    echo '<div class="disco_div">';
+    echo '<h2>Accéder à la page d\'administration</h2>';
+    echo '<a class="form_button_link" href="admin.php">Page d\'administration</a>';
+    echo '</div>';
+}
+?>
         <form class="log_reg_form" action="delete_account.php" method="POST">
             <h2>Supprimer votre compte</h2>
             <input placeholder="Mot de passe" type="password" name="password" required/><br>
