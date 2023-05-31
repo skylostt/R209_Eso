@@ -23,6 +23,7 @@ $req = $db->prepare('SELECT * FROM Articles WHERE nom LIKE :query AND (idCat=:ca
 $req->bindValue(':query', '%'.$query.'%');
 $req->bindValue(':cat', $_GET['cat']);
 $reponse = $req->execute();
+// On parcourt la liste des articles
 while ($donnees=$reponse->fetchArray())
 {
     echo '<div class="ranger">';

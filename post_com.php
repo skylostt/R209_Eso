@@ -1,12 +1,14 @@
 <?php
 session_start();
 include('db_class.php');
+// Si le forumlaire est incomplet ou que l'utilisateur n'est pas connecté
 if (! (isset($_SESSION['user']) AND isset($_POST['eval']) AND isset($_POST['comment']) AND is_numeric($_POST['eval']) AND isset($_GET['id']))) {
     header('location: index.php');
     exit;
 }
 $db = new MyDB();
 
+// Si la note est cohérente
 if (intval($_POST['eval']) <= 5 AND intval($_POST['eval']) >= 0) {
     $req = $db->prepare("INSERT INTO Commentaires (idUser, eval, texte, idProd) VALUES (:idUser, :eval, :texte, :idProd);");
     $req->bindValue(":idUser", $_SESSION['user']['idUser']);
@@ -14,6 +16,6 @@ if (intval($_POST['eval']) <= 5 AND intval($_POST['eval']) >= 0) {
     $req->bindValue(":texte", htmlspecialchars($_POST['comment']));
     $req->bindValue(":idProd", $_GET['id']);
     $req->execute();
-    header('location: article.php?id='.$_GET['id']);
 }
+header('location: article.php?id='.$_GET['id']);
 ?>
