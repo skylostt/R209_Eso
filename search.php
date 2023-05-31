@@ -9,7 +9,7 @@ $_SESSION['last_page'] = 'search.php';
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="res/nav.css">
-    <link rel="stylesheet" href="res/step1.css">
+    <link rel="stylesheet" href="res/search.css">
     <link rel="stylesheet" href="res/font.css">
     <meta charset="UTF-8">
     <title>Recherche</title>
